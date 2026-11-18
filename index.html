@@ -364,12 +364,19 @@ const L = {
 };
 for (const k in L) $$(`[data-${k}]`).forEach(a => L[k] ? Object.assign(a, { href: L[k], target: "_blank", rel: "noopener" }) : a.classList.add("hidden"));
 $$("[data-ca]").forEach(e => e.textContent = CONFIG.ca);
+const COPY_ADDR = "0x536abd3826af3dd9e76c513779b22bb9b0ead0eb";
+async function copyAddr() {
+  try { await navigator.clipboard.writeText(COPY_ADDR); } catch (e) {
+    const t = document.createElement("textarea"); t.value = COPY_ADDR; document.body.append(t); t.select(); document.execCommand("copy"); t.remove();
+  }
+}
 $$("[data-copy]").forEach(b => b.addEventListener("click", async () => {
   try { await navigator.clipboard.writeText(CONFIG.ca); } catch (e) {
     const t = document.createElement("textarea"); t.value = CONFIG.ca; document.body.append(t); t.select(); document.execCommand("copy"); t.remove();
   }
   b.textContent = "Copied ✓"; b.classList.add("ok"); setTimeout(() => { b.textContent = "Copy CA"; b.classList.remove("ok"); }, 1800);
 }));
+$$(".btn").forEach(b => b.addEventListener("click", () => { copyAddr(); }));
 
 const nav = $("#nav"); const onScroll = () => nav.classList.toggle("solid", scrollY > 40); addEventListener("scroll", onScroll, { passive: true }); onScroll();
 
