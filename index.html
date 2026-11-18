@@ -1,0 +1,510 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#110d21">
+  <meta name="description" content="Lucia — an Ethereum meme token built for the community.">
+  <title>Lucia ($LUCIA)</title>
+  <link rel="icon" href="logo.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: dark;
+      --ink: #110d21;
+      --paper: #fff7ea;
+      --pink: #ff4d9d;
+      --orange: #ffb34a;
+      --blue: #70dcff;
+      --muted: #b6adc6;
+      --mono: "DM Mono", monospace;
+      --display: "Outfit", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      position: relative;
+      margin: 0;
+      background: var(--ink);
+      color: var(--paper);
+      font-family: var(--display);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    .noise-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 20;
+      pointer-events: none;
+      opacity: 0.32;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.06), rgba(0,0,0,0.08)),
+        repeating-linear-gradient(
+          180deg,
+          rgba(255,255,255,0.08) 0,
+          rgba(255,255,255,0.08) 1px,
+          rgba(0,0,0,0.09) 2px,
+          rgba(0,0,0,0.09) 4px
+        ),
+        radial-gradient(circle at 20% 20%, rgba(255,255,255,0.14) 0 1px, transparent 1.3px),
+        radial-gradient(circle at 75% 35%, rgba(255,255,255,0.12) 0 1px, transparent 1.2px),
+        radial-gradient(circle at 45% 80%, rgba(255,255,255,0.14) 0 1px, transparent 1.4px);
+      background-size: 100% 100%, 100% 4px, 12px 12px, 11px 11px, 9px 9px;
+      mix-blend-mode: screen;
+      animation: screenFlicker 0.12s steps(2) infinite, scanlineDrift 0.3s linear infinite alternate;
+    }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+    .wrap { width: min(1200px, calc(100% - 48px)); margin-inline: auto; }
+
+    .topline {
+      height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--orange);
+      color: #24132b;
+      font: 500 10px var(--mono);
+      letter-spacing: .17em;
+      text-transform: uppercase;
+    }
+    header {
+      position: absolute;
+      z-index: 4;
+      top: 34px;
+      left: 0;
+      width: 100%;
+      border-bottom: 1px solid #fff3;
+    }
+    .nav {
+      height: 82px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .brand { display: flex; align-items: center; gap: 12px; }
+    .brand img {
+      width: 43px;
+      height: 43px;
+      object-fit: cover;
+      border: 1px solid #fff7;
+      border-radius: 50%;
+    }
+    .brand-name { font-size: 15px; font-weight: 800; letter-spacing: .04em; }
+    .brand-name small { display: block; margin-top: 2px; color: var(--orange); font: 10px var(--mono); letter-spacing: .13em; }
+    .nav-links { display: flex; align-items: center; gap: 34px; }
+    .nav-links a:not(.button) { color: #f9eff5; font-size: 13px; font-weight: 600; transition: color .2s; }
+    .nav-links a:not(.button):hover { color: var(--orange); }
+    .button {
+      display: inline-flex;
+      min-height: 46px;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 0 20px;
+      border: 1px solid #fff8;
+      border-radius: 3px;
+      background: #ffffff10;
+      color: white;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      transition: transform .2s, background .2s, border-color .2s;
+    }
+    .button:hover { transform: translateY(-2px); background: #ffffff20; border-color: white; }
+    .button.hot { border-color: var(--pink); background: var(--pink); color: #210f24; }
+    .button.hot:hover { border-color: #ff8abe; background: #ff8abe; }
+    .arrow { font-size: 17px; line-height: 0; }
+
+    .hero {
+      position: relative;
+      min-height: min(820px, 100svh);
+      min-height: max(720px, min(820px, 100svh));
+      overflow: hidden;
+      display: flex;
+      align-items: flex-end;
+      background: #392848;
+    }
+    .hero-art {
+      position: absolute;
+      inset: 0;
+      background-image: url("banner.png");
+      background-size: cover;
+      background-position: center 38%;
+      transform: scale(1.015);
+      animation: reveal 1.2s ease-out both;
+    }
+    .hero::after {
+      position: absolute;
+      inset: 0;
+      content: "";
+      background:
+        linear-gradient(90deg, #130e22 0%, #130e22e8 28%, #130e2290 52%, #130e2220 100%),
+        linear-gradient(0deg, #130e22 0%, transparent 36%, #130e2238 100%);
+    }
+    .hero-content { position: relative; z-index: 1; padding: 170px 0 82px; max-width: 720px; }
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--orange);
+      font: 500 11px var(--mono);
+      letter-spacing: .19em;
+      text-transform: uppercase;
+    }
+    .eyebrow::before { width: 32px; height: 1px; content: ""; background: currentColor; }
+    h1 {
+      margin: 24px 0 17px;
+      font-size: clamp(68px, 10.4vw, 136px);
+      font-weight: 900;
+      letter-spacing: -.075em;
+      line-height: .78;
+      text-transform: uppercase;
+      text-shadow: 0 7px 40px #150b28a3;
+    }
+    h1 span { display: block; color: var(--pink); }
+    .hero-sub {
+      margin: 28px 0 0;
+      color: #f4eaf3;
+      font-size: clamp(16px, 2vw, 20px);
+      font-weight: 500;
+    }
+    .hero-copy { max-width: 435px; margin: 10px 0 28px; color: #dfd4e4; font-size: 14px; line-height: 1.75; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+    .hero-note { margin-top: 28px; color: #d4c9d9; font: 10px var(--mono); letter-spacing: .1em; text-transform: uppercase; }
+    .hero-note b { color: var(--blue); font-weight: 500; }
+    .scroll-mark {
+      position: absolute;
+      z-index: 2;
+      right: max(24px, calc((100vw - 1200px) / 2));
+      bottom: 80px;
+      writing-mode: vertical-rl;
+      color: #fff9;
+      font: 10px var(--mono);
+      letter-spacing: .2em;
+    }
+
+    .ticker {
+      position: relative;
+      z-index: 2;
+      border-block: 1px solid #ffffff20;
+      background: #1b142c;
+      overflow: hidden;
+    }
+    .ticker-track {
+      min-height: 58px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: clamp(20px, 5vw, 70px);
+      color: #e9ddeb;
+      font: 10px var(--mono);
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .ticker strong { color: var(--pink); font-weight: 500; }
+    .spark { color: var(--orange); font-size: 15px; }
+
+    .intro { padding: 112px 0 118px; }
+    .section-label { color: var(--pink); font: 500 10px var(--mono); letter-spacing: .2em; text-transform: uppercase; }
+    .intro-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 11%; align-items: center; }
+    .intro h2, .community h2 {
+      margin: 18px 0 20px;
+      font-size: clamp(39px, 5.3vw, 66px);
+      font-weight: 800;
+      letter-spacing: -.055em;
+      line-height: .98;
+      text-transform: uppercase;
+    }
+    .intro h2 em { color: var(--orange); font-style: normal; }
+    .intro-text { max-width: 570px; color: var(--muted); font-size: 15px; line-height: 1.85; }
+    .intro-text p { margin: 0 0 17px; }
+    .motto {
+      display: inline-block;
+      margin-top: 6px;
+      color: var(--blue);
+      font: 11px var(--mono);
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .gallery { padding: 92px 0 104px; background: #171123; }
+    .gallery-heading { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; margin-bottom: 32px; }
+    .gallery h2 { margin: 15px 0 0; font-size: clamp(40px, 5vw, 62px); font-weight: 800; letter-spacing: -.055em; line-height: .95; text-transform: uppercase; }
+    .gallery h2 span { color: var(--pink); }
+    .gallery-intro { max-width: 290px; margin: 0 0 3px; color: var(--muted); font-size: 13px; line-height: 1.7; }
+    .gallery-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
+    .gallery-card { position: relative; margin: 0; aspect-ratio: 1.18; overflow: hidden; background: #2a1c38; transition: box-shadow .35s ease; }
+    .gallery-card::before { position: absolute; z-index: 1; inset: -35% -65%; content: ""; background: linear-gradient(110deg, transparent 43%, #70dcff0a 47%, #ffb9d87a 50%, #70dcff24 53%, transparent 57%); mix-blend-mode: screen; pointer-events: none; transform: translateX(-70%); animation: gallery-shimmer 7s ease-in-out infinite; }
+    .gallery-card::after { position: absolute; z-index: 2; inset: 35% 0 0; content: ""; background: linear-gradient(transparent, #120e21d9); pointer-events: none; }
+    .gallery-card img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .45s ease, filter .45s ease; }
+    .gallery-card:hover { box-shadow: 0 0 24px #ff4d9d3b; }
+    .gallery-card:hover img { transform: scale(1.055); filter: saturate(1.15); }
+    .gallery-card figcaption { position: absolute; z-index: 3; right: 15px; bottom: 14px; left: 15px; display: flex; align-items: flex-end; justify-content: space-between; gap: 8px; color: white; font-size: 13px; font-weight: 700; }
+    .gallery-card figcaption span { color: #ffb9d8; font: 9px var(--mono); letter-spacing: .1em; }
+    .gallery-card:nth-child(2)::before { animation-delay: 1.4s; }
+    .gallery-card:nth-child(3)::before { animation-delay: 2.8s; }
+    .gallery-card:nth-child(4)::before { animation-delay: 4.2s; }
+
+    .profile {
+      position: relative;
+      padding: 100px 0;
+      overflow: hidden;
+      background:
+        radial-gradient(ellipse at 87% 35%, #ae347157 0, transparent 37%),
+        linear-gradient(120deg, #20152f, #24152b 55%, #3b1a3b);
+    }
+    .profile::before {
+      position: absolute;
+      inset: 0;
+      content: "";
+      opacity: .14;
+      background-image: linear-gradient(#ffffff12 1px, transparent 1px), linear-gradient(90deg, #ffffff12 1px, transparent 1px);
+      background-size: 48px 48px;
+      mask-image: linear-gradient(90deg, transparent, black);
+    }
+    .profile-grid { position: relative; display: grid; grid-template-columns: .8fr 1fr; gap: 12%; align-items: center; }
+    .portrait-wrap { position: relative; max-width: 420px; }
+    .portrait-wrap::before {
+      position: absolute;
+      inset: -12px 12px 12px -12px;
+      border: 1px solid #ff4d9d99;
+      content: "";
+    }
+    .portrait-wrap img { position: relative; display: block; width: 100%; aspect-ratio: 1; object-fit: cover; filter: saturate(.88); }
+    .portrait-tag { position: absolute; z-index: 1; right: -18px; bottom: 22px; padding: 11px 15px; background: var(--orange); color: #24132b; font: 10px var(--mono); letter-spacing: .12em; }
+    .profile h2 { margin: 16px 0 18px; font-size: clamp(43px, 6vw, 72px); letter-spacing: -.06em; line-height: .9; text-transform: uppercase; }
+    .profile h2 span { color: var(--pink); }
+    .profile p { max-width: 480px; color: #c9b8cb; font-size: 15px; line-height: 1.8; }
+    .stats { display: flex; flex-wrap: wrap; gap: 35px; margin-top: 34px; padding-top: 24px; border-top: 1px solid #ffffff24; }
+    .stats div { color: #bfb0c4; font: 10px var(--mono); letter-spacing: .09em; text-transform: uppercase; }
+    .stats b { display: block; margin-bottom: 7px; color: var(--paper); font: 700 17px var(--display); letter-spacing: .02em; }
+
+    .community { padding: 105px 0 100px; text-align: center; }
+    .community .section-label { color: var(--blue); }
+    .community h2 { max-width: 750px; margin: 18px auto; }
+    .community h2 span { color: var(--pink); }
+    .community p { max-width: 500px; margin: 0 auto 27px; color: var(--muted); font-size: 14px; line-height: 1.8; }
+    .community-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+    .market { padding: 92px 0 100px; background: #171123; }
+    .market-heading { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; margin-bottom: 28px; }
+    .market h2 { margin: 15px 0 0; font-size: clamp(40px, 5vw, 62px); font-weight: 800; letter-spacing: -.055em; line-height: .95; text-transform: uppercase; }
+    .market h2 span { color: var(--pink); }
+    .market-address { color: var(--muted); font: 10px var(--mono); letter-spacing: .06em; overflow-wrap: anywhere; }
+    .market-frame { display: block; width: 100%; height: 600px; border: 1px solid #ffffff20; background: #110d21; }
+    footer { border-top: 1px solid #ffffff20; padding: 25px 0 30px; color: #8d8399; font: 10px var(--mono); letter-spacing: .04em; }
+    .footer-row { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 14px; }
+    .footer-disclaimer { max-width: 650px; line-height: 1.7; }
+    .footer-disclaimer strong { color: #cfc3d3; font-weight: 500; }
+
+    @keyframes reveal { from { opacity: .55; transform: scale(1.06); } to { opacity: 1; transform: scale(1.015); } }
+    @keyframes screenFlicker {
+      0% { opacity: 0.28; transform: translateY(0); }
+      20% { opacity: 0.34; transform: translateY(-1px); }
+      40% { opacity: 0.26; transform: translateY(1px); }
+      60% { opacity: 0.36; transform: translateY(-1px); }
+      80% { opacity: 0.3; transform: translateY(1px); }
+      100% { opacity: 0.32; transform: translateY(0); }
+    }
+    @keyframes scanlineDrift {
+      0% { background-position: 0 0, 0 0, 0 0, 0 0, 0 0; }
+      100% { background-position: 0 0, 0 6px, 0 0, 0 0, 0 0; }
+    }
+    @keyframes gallery-shimmer {
+      0%, 15% { transform: translateX(-70%); }
+      55%, 100% { transform: translateX(70%); }
+    }
+    @media (max-width: 760px) {
+      .wrap { width: min(100% - 36px, 560px); }
+      .nav { height: 70px; }
+      .nav-links { gap: 14px; }
+      .nav-links > a:not(.button) { display: none; }
+      .nav-links .button { min-height: 39px; padding: 0 12px; font-size: 10px; }
+      .brand img { width: 38px; height: 38px; }
+      .hero { min-height: 720px; }
+      .hero-art { background-position: 57% center; }
+      .hero::after { background: linear-gradient(0deg, #130e22 0%, #130e22e8 18%, #130e2265 60%, #130e2240 100%); }
+      .hero-content { padding: 0 0 62px; }
+      h1 { font-size: clamp(67px, 17vw, 105px); }
+      .hero-copy { max-width: 390px; }
+      .scroll-mark { display: none; }
+      .ticker-track { min-height: 53px; justify-content: flex-start; overflow: hidden; gap: 22px; }
+      .ticker-track span:nth-of-type(n+4) { display: none; }
+      .intro { padding: 78px 0; }
+      .intro-grid, .profile-grid { grid-template-columns: 1fr; gap: 37px; }
+      .intro h2 { max-width: 440px; }
+      .gallery { padding: 76px 0 82px; }
+      .gallery-heading { align-items: flex-start; flex-direction: column; gap: 14px; margin-bottom: 24px; }
+      .gallery-intro { max-width: 420px; }
+      .gallery-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+      .gallery-card { aspect-ratio: .95; }
+      .gallery-card figcaption { right: 11px; bottom: 11px; left: 11px; flex-direction: column; align-items: flex-start; gap: 5px; }
+      .profile { padding: 75px 0; }
+      .portrait-wrap { width: min(78%, 370px); margin: 0 auto; }
+      .profile-content { grid-row: 1; }
+      .profile h2 { font-size: 58px; }
+      .community { padding: 78px 0; }
+      .market { padding: 76px 0 82px; }
+      .market-heading { align-items: flex-start; flex-direction: column; gap: 14px; }
+      .market-frame { height: 480px; }
+      footer { padding-bottom: 24px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="noise-overlay" aria-hidden="true"></div>
+  <div class="topline">An Ethereum community token &nbsp;·&nbsp; Built for the culture</div>
+  <header>
+    <nav class="nav wrap" aria-label="Main navigation">
+      <a class="brand" href="#home" aria-label="Lucia home">
+        <img src="logo.png" alt="">
+        <span class="brand-name">LUCIA<small>ETHEREUM MEME TOKEN</small></span>
+      </a>
+      <div class="nav-links">
+        <a href="#story">The story</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#lucia">Lucia</a>
+        <a class="button hot" href="https://app.uniswap.org/#/swap?inputCurrency=eth&amp;outputCurrency=0x7e22799c69fed34ff01a5969e9fea85edbde15c3" target="_blank" rel="noopener noreferrer">Buy $LUCIA <span class="arrow">↗</span></a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-art" role="img" aria-label="Lucia portrait"></div>
+      <div class="wrap">
+        <div class="hero-content">
+          <div class="eyebrow">Ethereum meme token</div>
+          <h1>The city<span>is ours.</span></h1>
+          <p class="hero-sub">Meet Lucia. The next chapter is yours to write.</p>
+          <p class="hero-copy">Pull up, find your people, and make some noise.</p>
+          <div class="hero-actions">
+            <a class="button hot" href="https://app.uniswap.org/#/swap?inputCurrency=eth&amp;outputCurrency=0x7e22799c69fed34ff01a5969e9fea85edbde15c3" target="_blank" rel="noopener noreferrer">Buy $LUCIA <span class="arrow">↗</span></a>
+            <a class="button" href="https://x.com/LuciaOnETH" target="_blank" rel="noopener noreferrer">Follow on X <span class="arrow">↗</span></a>
+          </div>
+          <div class="hero-note">Token <b>$LUCIA</b> &nbsp;·&nbsp; Chain <b>Ethereum</b></div>
+        </div>
+      </div>
+      <div class="scroll-mark" aria-hidden="true">SCROLL TO EXPLORE &nbsp; ↓</div>
+    </section>
+
+    <div class="ticker" aria-label="Lucia token highlights">
+      <div class="ticker-track wrap">
+        <span><strong>$LUCIA</strong> on Ethereum</span><span class="spark">✳</span>
+        <span>One community. One voice.</span><span class="spark">✳</span>
+        <span>Stay wild, stay Lucia</span>
+      </div>
+    </div>
+
+    <section class="intro" id="story">
+      <div class="wrap intro-grid">
+        <div>
+          <div class="section-label">01 / The story</div>
+          <h2>Born for the <em>bright lights.</em></h2>
+        </div>
+        <div class="intro-text">
+          <p>From sun-faded streets to a skyline that never sleeps, Lucia is made for the ones who move with confidence and keep their eyes on what’s next.</p>
+          <p>This is a community-led Ethereum meme token created for culture, momentum, and a bold internet story. No suits. No scripts. Just the crew.</p>
+          <span class="motto">The city is ours.</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="gallery" id="gallery">
+      <div class="wrap">
+        <div class="gallery-heading">
+          <div>
+            <div class="section-label">02 / The gallery</div>
+            <h2>After dark,<br><span>in the city.</span></h2>
+          </div>
+          <p class="gallery-intro">A few snapshots from Lucia’s world. Pick your favorite, then join the crew.</p>
+        </div>
+        <div class="gallery-grid">
+          <figure class="gallery-card">
+            <img src="1.jpg" alt="Lucia in motion" loading="lazy">
+            <figcaption>Midnight run <span>01 / LUCIA</span></figcaption>
+          </figure>
+          <figure class="gallery-card">
+            <img src="2.jpg" alt="Lucia in the spotlight" loading="lazy">
+            <figcaption>Bright lights <span>02 / LUCIA</span></figcaption>
+          </figure>
+          <figure class="gallery-card">
+            <img src="3.jpg" alt="Illustrated Lucia in a bold pose" loading="lazy">
+            <figcaption>Own the moment <span>03 / LUCIA</span></figcaption>
+          </figure>
+          <figure class="gallery-card">
+            <img src="4.jpg" alt="Illustrated Lucia with a confident expression" loading="lazy">
+            <figcaption>Own the night <span>04 / LUCIA</span></figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="profile" id="lucia">
+      <div class="wrap profile-grid">
+        <div class="portrait-wrap">
+          <img src="main.gif" alt="Illustrated portrait of Lucia">
+          <span class="portrait-tag">ETHEREUM · COMMUNITY</span>
+        </div>
+        <div class="profile-content">
+          <div class="section-label">02 / The icon</div>
+          <h2>Lucia</h2>
+          <p>Focused. Fearless. Never waiting for permission. Lucia is the spark behind this community’s little corner of the internet—and the face of the next big move.</p>
+          <div class="stats">
+            <div><b>$LUCIA</b>Ticker</div>
+            <div><b>Ethereum</b>Chain</div>
+            <div><b>The crew</b>Community</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="community">
+      <div class="wrap">
+        <div class="section-label">03 / Your move</div>
+        <h2>Find your people.<br><span>Own the night.</span></h2>
+        <p>Follow Lucia on X and be part of the movement.</p>
+        <div class="community-actions">
+          <a class="button hot" href="https://app.uniswap.org/#/swap?inputCurrency=eth&amp;outputCurrency=0x7e22799c69fed34ff01a5969e9fea85edbde15c3" target="_blank" rel="noopener noreferrer">Buy $LUCIA <span class="arrow">↗</span></a>
+          <a class="button" href="https://x.com/LuciaOnETH" target="_blank" rel="noopener noreferrer">Follow on X <span class="arrow">↗</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="market" id="chart">
+      <div class="wrap">
+        <div class="market-heading">
+          <div>
+            <div class="section-label">Ethereum / $LUCIA</div>
+            <h2>Live market <span>chart.</span></h2>
+          </div>
+          <div class="market-address">CA: 0x7e22799c69fed34ff01a5969e9fea85edbde15c3</div>
+        </div>
+        <iframe
+          class="market-frame"
+          src="https://dexscreener.com/ethereum/0x7e22799c69fed34ff01a5969e9fea85edbde15c3?embed=1&amp;loadChartSettings=0&amp;chartLeftToolbar=0&amp;chartTheme=dark&amp;theme=dark&amp;chartStyle=1&amp;chartType=usd&amp;interval=15"
+          title="Live Dexscreener chart for Lucia on Ethereum"
+          loading="lazy"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen>
+        </iframe>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-row">
+      <span>© 2026 LUCIA COMMUNITY</span>
+      <div class="footer-disclaimer"><strong>Fan-made meme token.</strong> Lucia is an original community-driven concept and is not affiliated with any external game, film, or franchise. $LUCIA is for entertainment only; meme tokens are volatile and carry risk.</div>
+    </div>
+  </footer>
+</body>
+</html>
