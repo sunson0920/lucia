@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>LUCIA · Main Character</title>
-<meta name="description" content="Millions will play. One name on every screen. Lucia. A Solana memecoin site built by random holders.">
+<meta name="description" content="Millions will play. One name on every screen. Lucia. An Ethereum memecoin site built by random holders.">
 <meta property="og:title" content="LUCIA · Main Character">
 <meta property="og:description" content="Millions will play. One name on every screen.">
 <meta property="og:image" content="https://luciaonsol.com/media/og.jpg">
@@ -20,9 +20,9 @@
 <link href="fonts/fonts.css" rel="stylesheet">
 <style>
 :root{
-  --night:#0a0614; --deep:#140b25; --card:#1b1131; --line:rgba(255,255,255,.1);
-  --pink:#ff3d8b; --coral:#ff7a59; --gold:#ffc36b; --teal:#2de2e6; --violet:#b84dff;
-  --text:#f8f2ff; --muted:#bcaed8;
+  --night:#060912; --deep:#0b1220; --card:#111a2e; --line:rgba(255,255,255,.1);
+  --pink:#ff3d8b; --coral:#ff7a59; --gold:#ffc36b; --teal:#8eb4ff; --violet:#627EEA;
+  --text:#f2f5ff; --muted:#a8b3d4;
   --sunset:linear-gradient(100deg,var(--gold) 0%,var(--coral) 32%,var(--pink) 66%,var(--violet) 100%);
 }
 *{box-sizing:border-box;margin:0;padding:0}
@@ -38,19 +38,19 @@ a{color:inherit;text-decoration:none}
 
 /* ---------- nav ---------- */
 nav{position:fixed;inset:0 0 auto;z-index:60;transition:background .3s}
-nav.solid{background:rgba(10,6,20,.75);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+nav.solid{background:rgba(6,9,18,.78);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
 .nav-in{display:flex;align-items:center;justify-content:space-between;height:66px}
 .brand{font-family:Anton,sans-serif;font-size:26px;letter-spacing:.04em}
 .links{display:flex;gap:26px;font-size:14px;font-weight:600;color:var(--muted)}
 .links a:hover{color:var(--text)}
 .btn{display:inline-flex;align-items:center;gap:8px;padding:13px 22px;border-radius:999px;font-weight:800;font-size:15px;border:0;cursor:pointer;transition:transform .15s,box-shadow .2s;white-space:nowrap}
 .btn:hover{transform:translateY(-2px)}
-.btn-hot{background:var(--sunset);color:#1a0b1f;box-shadow:0 10px 40px -10px var(--pink)}
+.btn-hot{background:var(--sunset);color:#060912;box-shadow:0 10px 40px -10px var(--pink)}
 .btn-ghost{background:rgba(255,255,255,.07);color:var(--text);border:1px solid rgba(255,255,255,.2);backdrop-filter:blur(8px)}
 .btn-sm{padding:10px 18px;font-size:14px}
 
 /* ---------- video layers (YouTube, muted loops) ---------- */
-.vid{position:absolute;inset:0;overflow:hidden;pointer-events:none;background:radial-gradient(120% 90% at 70% 20%,#4a1a55,#1a0d30 55%,var(--night));background-size:cover;background-position:center}
+.vid{position:absolute;inset:0;overflow:hidden;pointer-events:none;background:radial-gradient(120% 90% at 70% 20%,#1a2a55,#0a1228 55%,var(--night));background-size:cover;background-position:center}
 .vid iframe{position:absolute;top:50%;left:50%;width:100%;height:100%;min-width:177.78vh;min-height:56.25vw;transform:translate(-50%,-50%) scale(1.18);border:0;opacity:0;transition:opacity 1s}
 .vid.on iframe{opacity:1}
 .grain:after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.12;mix-blend-mode:overlay;background:repeating-linear-gradient(0deg,#fff 0 1px,transparent 1px 3px)}
@@ -59,8 +59,8 @@ nav.solid{background:rgba(10,6,20,.75);backdrop-filter:blur(14px);border-bottom:
 .hero{position:relative;height:100svh;min-height:620px;display:flex;align-items:flex-end;isolation:isolate;overflow:hidden}
 .hero .vid{z-index:-3}
 .hero:before{content:"";position:absolute;inset:0;z-index:-2;background:
-  linear-gradient(180deg,rgba(10,6,20,.5),rgba(10,6,20,0) 28%,rgba(10,6,20,.15) 60%,var(--night) 100%),
-  linear-gradient(90deg,rgba(10,6,20,.75),rgba(10,6,20,0) 65%)}
+  linear-gradient(180deg,rgba(6,9,18,.5),rgba(6,9,18,0) 28%,rgba(6,9,18,.15) 60%,var(--night) 100%),
+  linear-gradient(90deg,rgba(6,9,18,.75),rgba(6,9,18,0) 65%)}
 .hero-in{padding-bottom:7svh}
 .hero h1{font-size:clamp(110px,24vw,340px);filter:drop-shadow(0 12px 60px rgba(255,61,139,.45))}
 .hero .tag{font-size:clamp(34px,5vw,64px);color:var(--gold);display:inline-block;transform:rotate(-4deg);margin:-.2em 0 .3em .1em}
@@ -80,28 +80,28 @@ nav.solid{background:rgba(10,6,20,.75);backdrop-filter:blur(14px);border-bottom:
 /* ---------- marquee ---------- */
 .marquee{overflow:hidden;background:var(--sunset);padding:14px 0;transform:rotate(-1.2deg) scale(1.03);margin:-10px 0 0;position:relative;z-index:2}
 .track{display:flex;gap:36px;width:max-content;animation:run 30s linear infinite}
-.track span{font-family:Anton,sans-serif;font-size:28px;text-transform:uppercase;color:#1a0b1f;white-space:nowrap}
+.track span{font-family:Anton,sans-serif;font-size:28px;text-transform:uppercase;color:#060912;white-space:nowrap}
 @keyframes run{to{transform:translateX(-50%)}}
 
 /* ---------- thesis ---------- */
 .thesis{padding:150px 0 90px}
 .big{font-size:clamp(54px,9.5vw,150px)}
 .thesis .big span{display:block}
-.lead{font-size:clamp(18px,1.8vw,22px);color:#e3d8f6;max-width:640px;margin-top:28px}
+.lead{font-size:clamp(18px,1.8vw,22px);color:#d8e0f6;max-width:640px;margin-top:28px}
 .numbers{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:80px}
 .num{padding:30px 28px;border-radius:26px;background:linear-gradient(180deg,var(--card),var(--deep));border:1px solid var(--line)}
 .num b{display:block;font-family:Anton,sans-serif;font-weight:400;font-size:clamp(54px,6vw,86px);line-height:1}
 .num p{color:var(--muted);margin-top:10px;font-size:15px}
-.num small{display:block;margin-top:8px;font-size:11px;color:rgba(188,174,216,.6)}
+.num small{display:block;margin-top:8px;font-size:11px;color:rgba(168,179,212,.6)}
 
 /* ---------- cinematic bands ---------- */
 .band{position:relative;height:92svh;min-height:520px;display:flex;align-items:center;isolation:isolate;overflow:hidden}
 .band .vid{z-index:-2}
-.band:before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,var(--night) 0%,rgba(10,6,20,.15) 22%,rgba(10,6,20,.15) 70%,var(--night) 100%),linear-gradient(90deg,rgba(10,6,20,.7),transparent 60%)}
-.band.right:before{background:linear-gradient(180deg,var(--night) 0%,rgba(10,6,20,.15) 22%,rgba(10,6,20,.15) 70%,var(--night) 100%),linear-gradient(270deg,rgba(10,6,20,.7),transparent 60%)}
+.band:before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,var(--night) 0%,rgba(6,9,18,.15) 22%,rgba(6,9,18,.15) 70%,var(--night) 100%),linear-gradient(90deg,rgba(6,9,18,.7),transparent 60%)}
+.band.right:before{background:linear-gradient(180deg,var(--night) 0%,rgba(6,9,18,.15) 22%,rgba(6,9,18,.15) 70%,var(--night) 100%),linear-gradient(270deg,rgba(6,9,18,.7),transparent 60%)}
 .band.right .wrap{text-align:right}
 .band h2{font-size:clamp(56px,10vw,160px)}
-.band p{font-size:clamp(17px,1.7vw,21px);color:#efe6ff;max-width:520px;margin-top:18px;text-shadow:0 2px 20px rgba(0,0,0,.6)}
+.band p{font-size:clamp(17px,1.7vw,21px);color:#e8edff;max-width:520px;margin-top:18px;text-shadow:0 2px 20px rgba(0,0,0,.6)}
 .band.right p{margin-left:auto}
 .band .script{font-size:clamp(30px,4vw,52px);color:var(--gold);display:block;margin-bottom:8px}
 
@@ -114,15 +114,15 @@ nav.solid{background:rgba(10,6,20,.75);backdrop-filter:blur(14px);border-bottom:
 .tile{position:relative;grid-column:span 2;aspect-ratio:9/12;border-radius:22px;overflow:hidden;border:1px solid var(--line);cursor:pointer;isolation:isolate;background:var(--deep)}
 .tile.wide{grid-column:span 4;aspect-ratio:auto}
 .tile .vid iframe{transform:translate(-50%,-50%) scale(1.25)}
-.tile:after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(0deg,rgba(10,6,20,.9),rgba(10,6,20,0) 50%)}
+.tile:after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(0deg,rgba(6,9,18,.9),rgba(6,9,18,0) 50%)}
 .tile .meta{position:absolute;left:20px;right:20px;bottom:18px;z-index:2}
 .tile h4{font-family:Anton,sans-serif;font-weight:400;font-size:clamp(26px,2.6vw,40px);text-transform:uppercase;line-height:1}
 .tile .src{font-size:12px;color:var(--muted);margin-top:6px;display:flex;align-items:center;gap:8px}
 .tile .src:before{content:"";width:8px;height:8px;border-radius:50%;background:var(--pink);box-shadow:0 0 10px var(--pink)}
-.tile .hint{position:absolute;top:14px;right:14px;z-index:2;font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;padding:6px 10px;border-radius:999px;background:rgba(10,6,20,.6);border:1px solid var(--line)}
+.tile .hint{position:absolute;top:14px;right:14px;z-index:2;font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;padding:6px 10px;border-radius:999px;background:rgba(6,9,18,.6);border:1px solid var(--line)}
 
 /* player modal */
-.modal{position:fixed;inset:0;z-index:90;background:rgba(5,3,10,.95);display:none;place-items:center;padding:16px}
+.modal{position:fixed;inset:0;z-index:90;background:rgba(3,6,12,.95);display:none;place-items:center;padding:16px}
 .modal.on{display:grid}
 .modal .box{width:min(1200px,100%);aspect-ratio:16/9;border-radius:18px;overflow:hidden;background:#000}
 .modal iframe{width:100%;height:100%;border:0}
@@ -133,7 +133,7 @@ nav.solid{background:rgba(10,6,20,.75);backdrop-filter:blur(14px);border-bottom:
 .gallery figure{break-inside:avoid;margin-bottom:14px;border-radius:18px;overflow:hidden;border:1px solid var(--line);cursor:zoom-in}
 .gallery img{width:100%;height:auto;display:block;transition:transform .5s}
 .gallery figure:hover img{transform:scale(1.04)}
-.lightbox{position:fixed;inset:0;z-index:90;background:rgba(5,3,10,.95);display:none;place-items:center;padding:16px;cursor:zoom-out}
+.lightbox{position:fixed;inset:0;z-index:90;background:rgba(3,6,12,.95);display:none;place-items:center;padding:16px;cursor:zoom-out}
 .lightbox.on{display:grid}
 .lightbox img{max-height:92svh;max-width:100%;border-radius:14px}
 
@@ -144,35 +144,17 @@ nav.solid{background:rgba(10,6,20,.75);backdrop-filter:blur(14px);border-bottom:
 .modal.support{z-index:95}
 .sbox{position:relative;width:min(560px,100%);border-radius:24px;background:linear-gradient(180deg,var(--card),var(--deep));border:1px solid var(--line);padding:34px 28px 26px}
 .sbox h3{font-size:clamp(40px,7vw,64px);margin:6px 0 12px}
-.sbox p{color:#e3d8f6}
+.sbox p{color:#d8e0f6}
 .sbox .ca{margin:18px 0 10px}
-.sbox .solscan{font-size:14px;color:var(--teal)}
+.sbox .etherscan{font-size:14px;color:var(--teal)}
 .sbox .fine{font-size:12px;color:var(--muted);margin-top:14px}
 .sbox .x{position:absolute;top:12px;right:12px}
 @media (max-width:560px){.support-btn span{display:none}.nav-cta .btn{padding:9px 13px}}
 
-/* origin */
-.origin{display:grid;grid-template-columns:1.1fr 1fr;gap:40px;align-items:center}
-.origin .note{font-size:12px;color:var(--muted);margin-top:14px;opacity:.8}
-.tweet{min-width:0;display:flex;justify-content:center}
-.tweet blockquote{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px 24px;font-size:20px;max-width:520px;width:100%}
-.tweet blockquote a{color:var(--teal)}
-@media (max-width:900px){.origin{grid-template-columns:1fr}}
-
-/* countdown */
-.release{position:relative;border-radius:34px;overflow:hidden;padding:90px 24px;text-align:center;isolation:isolate;background:
-  radial-gradient(60% 120% at 50% 120%,rgba(255,61,139,.6),transparent 70%),
-  radial-gradient(40% 80% at 50% 110%,rgba(255,195,107,.7),transparent 70%),
-  linear-gradient(180deg,#0f0820,#2a1040)}
-.release:after{content:"";position:absolute;left:-10%;right:-10%;bottom:0;height:45%;z-index:-1;background:repeating-linear-gradient(90deg,rgba(255,255,255,.08) 0 1px,transparent 1px 64px),repeating-linear-gradient(0deg,rgba(255,255,255,.08) 0 1px,transparent 1px 32px);transform:perspective(380px) rotateX(62deg);transform-origin:bottom}
-.release h2{font-size:clamp(46px,7vw,100px)}
-.count{display:flex;justify-content:center;gap:clamp(8px,2.6vw,30px);margin-top:30px}
-.count div{min-width:clamp(56px,13vw,150px);padding:16px 6px;border-radius:18px;background:rgba(10,6,20,.55);border:1px solid var(--line);backdrop-filter:blur(8px)}
-.count b{display:block;font-family:Anton,sans-serif;font-weight:400;font-size:clamp(40px,7vw,92px);line-height:1;font-variant-numeric:tabular-nums}
-.count small{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
-
 /* token block */
-.token{padding:120px 0}
+.token{padding:100px 0 120px}
+.token .head h2{font-size:clamp(56px,8vw,120px)}
+.token .ticker{font-family:Anton,sans-serif;font-size:clamp(28px,4vw,48px);letter-spacing:.04em;margin-top:6px}
 .tok{display:grid;grid-template-columns:1.05fr 1fr;gap:18px}
 .tok>*{min-width:0}
 .panel{border-radius:26px;background:var(--card);border:1px solid var(--line);padding:28px}
@@ -184,9 +166,10 @@ nav.solid{background:rgba(10,6,20,.75);backdrop-filter:blur(14px);border-bottom:
 .ca{display:flex;align-items:center;gap:10px;padding:8px 8px 8px 16px;border-radius:14px;background:var(--night);border:1px solid var(--line);font:500 13px ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--muted)}
 .ca span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0;flex:1}
 .ca button{flex:none;background:var(--card);color:var(--text);border:1px solid var(--line);border-radius:9px;padding:8px 12px;font:700 12px Inter,sans-serif;cursor:pointer}
-.ca button.ok{background:var(--teal);color:#06202a}
+.ca button.ok{background:var(--violet);color:#060912}
 .venues{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px}
 .venues .btn{justify-content:center}
+.venues .btn-hot{grid-column:1 / -1}
 .chart{border-radius:26px;overflow:hidden;border:1px solid var(--line);min-height:460px;background:var(--deep)}
 .chart iframe{width:100%;height:100%;min-height:460px;border:0;display:block}
 .howto{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:18px;counter-reset:s}
@@ -232,8 +215,8 @@ footer strong{color:var(--text)}
 <nav id="nav">
   <div class="wrap nav-in">
     <a class="brand grad" href="#top">LUCIA</a>
-    <div class="links"><a href="#thesis">The thesis</a><a href="#reel">Her scenes</a><a href="#release">Release</a><a href="#token">$LUCIA</a></div>
-    <div class="nav-cta"><button class="sound off" id="sound" type="button" aria-label="Turn sound on"><span id="soundIc">🔇</span><span class="bars"><i></i><i></i><i></i><i></i></span><span id="soundTxt">Sound</span></button><button class="btn btn-ghost btn-sm support-btn" type="button" data-support>💗 <span>Support the CTO</span></button><a class="btn btn-hot btn-sm" data-buy href="#">Buy<span class="hide-sm"> $Lucia</span></a></div>
+    <div class="links"><a href="#thesis">The thesis</a><a href="#reel">Her scenes</a><a href="#token">$LUCIA</a></div>
+    <div class="nav-cta"><button class="sound off" id="sound" type="button" aria-label="Turn sound on"><span id="soundIc">🔇</span><span class="bars"><i></i><i></i><i></i><i></i></span><span id="soundTxt">Sound</span></button><button class="btn btn-ghost btn-sm support-btn" type="button" data-support>💗 <span>Support the CTO</span></button><a class="btn btn-hot btn-sm" data-buy href="#">Buy<span class="hide-sm"> $LUCIA</span></a></div>
   </div>
 </nav>
 
@@ -245,9 +228,8 @@ footer strong{color:var(--text)}
     <h1 class="display grad">Lucia</h1>
     <div class="tag script">main character energy</div>
     <div class="hero-row">
-      <a class="btn btn-hot" data-buy href="#"><img src="media/logos/jup.ag.png" alt="">Buy $Lucia</a>
-      <a class="btn btn-ghost" data-pump href="#"><img src="media/logos/pump.fun.png" alt="">Pump.fun</a>
-      <a class="btn btn-ghost" data-fomo href="#"><img src="media/logos/fomo.family.png" alt="">Fomo</a>
+      <a class="btn btn-hot" data-buy href="#"><img src="media/logos/uniswap.org.png" alt="">Buy $LUCIA</a>
+      <a class="btn btn-ghost" data-chart href="#"><img src="media/logos/dexscreener.com.png" alt="">DexScreener</a>
       <a class="btn btn-ghost" data-x href="#"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>Follow</a>
       <a class="btn btn-ghost" data-tg href="#"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12" fill="#2AABEE"/><path fill="#fff" d="M5.4 11.7l11.2-4.3c.5-.2 1 .1.8.9l-1.9 9c-.1.6-.5.8-1.1.5l-3-2.2-1.4 1.4c-.2.2-.3.3-.6.3l.2-3.1 5.6-5c.2-.2-.1-.3-.4-.1l-6.9 4.3-3-.9c-.6-.2-.7-.6.5-.8z"/></svg>Telegram</a>
     </div>
@@ -312,39 +294,17 @@ footer strong{color:var(--text)}
   </div>
 </section>
 
-<!-- ORIGIN -->
-<section id="origin" style="padding:40px 0 70px">
-  <div class="wrap origin reveal">
-    <div>
-      <div class="eyebrow">Lore</div>
-      <h2 class="display" style="font-size:clamp(46px,7vw,100px)"><span class="grad">Lucia / TTWO</span></h2>
-      <p class="lead">September 1, 2026.</p>
-      <p class="note">Ansem is not affiliated with $LUCIA.</p>
-    </div>
-    <div class="tweet">
-      <blockquote class="twitter-tweet" data-theme="dark" data-dnt="true" data-conversation="none"><p lang="en" dir="ltr">lucia/ttwo would go crazy</p>&mdash; Ansem (@blknoiz06) <a href="https://x.com/blknoiz06/status/2094826177303138332">September 1, 2026</a></blockquote>
-    </div>
-  </div>
-</section>
-
-<!-- RELEASE -->
-<section id="release" style="padding:60px 0">
-  <div class="wrap">
-    <div class="release reveal">
-      <div class="eyebrow" id="relEyebrow">Grand Theft Auto VI · November 19, 2026</div>
-      <h2 class="display" id="relTitle" style="margin-top:12px">She lands in</h2>
-      <div class="count" id="count">
-        <div><b data-c="d">00</b><small>Days</small></div><div><b data-c="h">00</b><small>Hours</small></div>
-        <div><b data-c="m">00</b><small>Min</small></div><div><b data-c="s">00</b><small>Sec</small></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- TOKEN (compact) -->
+<!-- TOKEN -->
 <section class="token" id="token">
   <div class="wrap">
-    <div class="head reveal"><div><div class="eyebrow">On Solana</div><h2 class="display">$<span class="grad">LUCIA</span></h2></div><p>The coin named after her. No dev, no team: this site was made by random holders.</p></div>
+    <div class="head reveal">
+      <div>
+        <div class="eyebrow">Ethereum · memecoin</div>
+        <h2 class="display">Lucia</h2>
+        <div class="ticker">$<span class="grad">LUCIA</span></div>
+      </div>
+      <p>The coin named after her. No dev, no team: this site was made by random holders.</p>
+    </div>
     <div class="tok">
       <div class="panel reveal">
         <div class="ca"><span data-ca></span><button type="button" data-copy>Copy CA</button></div>
@@ -355,20 +315,19 @@ footer strong{color:var(--text)}
           <div class="stat"><small>Holders</small><strong data-holders>–</strong></div>
         </div>
         <div class="venues">
-          <a class="btn btn-hot" data-buy href="#"><img src="media/logos/jup.ag.png" alt="">Jupiter</a>
-          <a class="btn btn-ghost" data-pump href="#"><img src="media/logos/pump.fun.png" alt="">Pump.fun</a>
-          <a class="btn btn-ghost" data-fomo href="#"><img src="media/logos/fomo.family.png" alt="">Fomo</a>
-          <a class="btn btn-ghost" data-chart href="#"><img src="media/logos/dexscreener.com.png" alt="">DexScreener</a>
+          <a class="btn btn-hot" data-buy href="#"><img src="media/logos/uniswap.org.png" alt="">Buy $LUCIA</a>
+          <a class="btn btn-ghost" data-chart href="#"><img src="media/logos/dexscreener.com.png" alt="">Chart</a>
+          <a class="btn btn-ghost" data-scan href="#"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="#627EEA" d="M12 1.75 5.75 12.25l6.25 3.7 6.25-3.7L12 1.75zm0 14.35-6.25-3.7L12 22.25l6.25-9.85-6.25 3.7z"/></svg>Etherscan</a>
           <a class="btn btn-ghost" data-x href="#"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>X</a>
           <a class="btn btn-ghost" data-tg href="#"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12" fill="#2AABEE"/><path fill="#fff" d="M5.4 11.7l11.2-4.3c.5-.2 1 .1.8.9l-1.9 9c-.1.6-.5.8-1.1.5l-3-2.2-1.4 1.4c-.2.2-.3.3-.6.3l.2-3.1 5.6-5c.2-.2-.1-.3-.4-.1l-6.9 4.3-3-.9c-.6-.2-.7-.6.5-.8z"/></svg>Telegram</a>
         </div>
       </div>
-      <div class="chart reveal"><iframe id="chartFrame" title="$LUCIA chart" loading="lazy"></iframe></div>
+      <div class="chart reveal"><iframe id="chartFrame" title="Lucia ($LUCIA) chart" loading="lazy"></iframe></div>
     </div>
     <div class="howto reveal">
-      <div><b>Get a wallet</b>Phantom or Solflare.</div>
-      <div><b>Get SOL</b>From any exchange.</div>
-      <div><b>Pick an app</b>Jupiter, pump.fun or Fomo.</div>
+      <div><b>Get a wallet</b>MetaMask or Rabby.</div>
+      <div><b>Get ETH</b>From any exchange.</div>
+      <div><b>Open Uniswap</b>Swap ETH for Lucia ($LUCIA).</div>
       <div><b>Paste the CA</b>Check it matches, then swap.</div>
     </div>
   </div>
@@ -377,7 +336,7 @@ footer strong{color:var(--text)}
 <footer>
   <div class="wrap">
     <div class="made">site built by random holders</div>
-    <div><strong>$LUCIA</strong> is a memecoin with no team, no roadmap and no intrinsic value. Crypto is risky: never put in what you can't afford to lose.</div>
+    <div><strong>Lucia ($LUCIA)</strong> is a memecoin with no team, no roadmap and no intrinsic value. Crypto is risky: never put in what you can't afford to lose.</div>
     <div>Fan-made and unofficial. Not affiliated with, endorsed or sponsored by Rockstar Games or Take-Two Interactive. Grand Theft Auto and related names are trademarks of Take-Two Interactive Software. Trailer footage is embedded from Rockstar Games' official YouTube channel.</div>
   </div>
 </footer>
@@ -387,10 +346,10 @@ footer strong{color:var(--text)}
     <button class="x" type="button" data-close aria-label="Close">✕</button>
     <div class="eyebrow">Community wallet</div>
     <h3 class="display grad">Support the CTO</h3>
-    <p>$LUCIA is run by holders. Donations in <b>SOL</b>, <b>LUCIA</b> or <b>TTWO</b> pay for listings, boosts and content. Every spend is posted in the Telegram.</p>
+    <p><b>Lucia ($LUCIA)</b> is run by holders. Donations in <b>ETH</b> or <b>$LUCIA</b> pay for listings, boosts and content. Every spend is posted in the Telegram.</p>
     <div class="ca"><span data-wallet></span><button type="button" data-copy-wallet>Copy</button></div>
-    <a class="solscan" data-wallet-link href="#" target="_blank" rel="noopener">View the wallet on Solscan ↗</a>
-    <p class="fine">Solana only. Run by a holder; donations are voluntary and can't be refunded.</p>
+    <a class="etherscan" data-wallet-link href="#" target="_blank" rel="noopener">View the wallet on Etherscan ↗</a>
+    <p class="fine">Ethereum only. Run by a holder; donations are voluntary and can't be refunded.</p>
   </div>
 </div>
 <div class="modal" id="modal"><button class="x" type="button" aria-label="Close">✕</button><div class="box" id="modalBox"></div></div>
@@ -401,11 +360,11 @@ footer strong{color:var(--text)}
 const T1 = "QdBZY2fkU-0", T2 = "VQRLujxTm3c";   // official Rockstar Games uploads
 const CONFIG = {
   ca:   "0xede6a93741f2466decfd709158e235fbfaf001a1",
-  pair: "GfJ9N22hFFBqF29M5yxmCU39rcWLXarCbpvNzr71k4YW",
+  pair: "0x0ae719a83316cc6fd1527146e587aad68cdbb508f5c1cde495ddb252802d1158",
+  wallet: "", // paste ETH donation address
   x:    "https://x.com/luciaeth_x",
-  telegram: "https://t.me/luciaonsol",
+  telegram: "https://t.me/luciaeth_tg",
   holders: "7,100+",
-  release: "2026-11-19T00:00:00",
   // Muted background loops. Segments checked frame by frame: Lucia only.
   loops: {
     hero:  { id: T1, start: 4,   end: 40 },    // "Lucia, do you know why you're here?" "Bad luck, I guess." + ~30 s of the trailer's song
@@ -429,8 +388,9 @@ const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 // links
 const L = {
-  buy: `https://jup.ag/swap/SOL-${CONFIG.ca}`, chart: `https://dexscreener.com/solana/${CONFIG.pair}`,
-  pump: `https://pump.fun/coin/${CONFIG.ca}`, fomo: `https://fomo.family/tokens/solana/${CONFIG.ca}`,
+  buy: `https://app.uniswap.org/swap?chain=mainnet&outputCurrency=${CONFIG.ca}`,
+  chart: `https://dexscreener.com/ethereum/${CONFIG.pair}`,
+  scan: `https://etherscan.io/token/${CONFIG.ca}`,
   x: CONFIG.x, tg: CONFIG.telegram,
 };
 for (const k in L) $$(`[data-${k}]`).forEach(a => L[k] ? Object.assign(a, { href: L[k], target: "_blank", rel: "noopener" }) : a.classList.add("hidden"));
@@ -547,7 +507,7 @@ applySound();
 const usd = n => n == null ? "–" : n >= 1e9 ? "$" + (n / 1e9).toFixed(2) + "B" : n >= 1e6 ? "$" + (n / 1e6).toFixed(2) + "M" : n >= 1e3 ? "$" + (n / 1e3).toFixed(1) + "K" : "$" + n.toFixed(0);
 async function stats() {
   try {
-    const j = await (await fetch(`https://api.dexscreener.com/latest/dex/pairs/solana/${CONFIG.pair}`)).json();
+    const j = await (await fetch(`https://api.dexscreener.com/latest/dex/pairs/ethereum/${CONFIG.pair}`)).json();
     const p = j.pair || j.pairs?.[0]; if (!p) return;
     $('[data-s="mcap"]').textContent = usd(p.marketCap ?? p.fdv);
     $('[data-s="liq"]').textContent = usd(p.liquidity?.usd);
@@ -556,7 +516,7 @@ async function stats() {
   } catch (e) {}
 }
 stats(); setInterval(stats, 30000);
-$("#chartFrame").src = `https://dexscreener.com/solana/${CONFIG.pair}?embed=1&loadChartSettings=0&trades=0&tabs=0&info=0&chartLeftToolbar=0&chartTheme=dark&theme=dark&chartStyle=1&chartType=usd&interval=15`;
+$("#chartFrame").src = `https://dexscreener.com/ethereum/${CONFIG.pair}?embed=1&loadChartSettings=0&trades=0&tabs=0&info=0&chartLeftToolbar=0&chartTheme=dark&theme=dark&chartStyle=1&chartType=usd&interval=15`;
 
 // gallery: media/gallery/N.jpg (1600 px, lightbox) + N-800.jpg (grid)
 if (CONFIG.gallery) {
@@ -569,41 +529,26 @@ if (CONFIG.gallery) {
 }
 $("#lightbox").addEventListener("click", () => $("#lightbox").classList.remove("on"));
 
-// countdown
-const target = new Date(CONFIG.release).getTime();
-(function tick() {
-  const d = Math.max(0, target - Date.now());
-  if (!d) { $("#relTitle").innerHTML = 'She\'s <span class="grad">here</span>'; $("#count").classList.add("hidden"); $("#relEyebrow").textContent = "Grand Theft Auto VI · out now"; return; }
-  const v = { d: Math.floor(d / 864e5), h: Math.floor(d / 36e5) % 24, m: Math.floor(d / 6e4) % 60, s: Math.floor(d / 1e3) % 60 };
-  for (const k in v) $(`[data-c="${k}"]`).textContent = String(v[k]).padStart(2, "0");
-  setTimeout(tick, 1000);
-})();
-
 $$(".reveal").forEach(el => io.observe(el));
 
 // community wallet (Support the CTO)
-const WALLET = "2XLTLPLMQRjS5URwkFHcS5NxigRUemPagey27jki5P5P";
-$$("[data-wallet]").forEach(e => e.textContent = WALLET);
-$$("[data-wallet-link]").forEach(a => a.href = `https://solscan.io/account/${WALLET}`);
+const WALLET = CONFIG.wallet;
+$$("[data-wallet]").forEach(e => e.textContent = WALLET || "Ask in Telegram for the ETH wallet");
+$$("[data-wallet-link]").forEach(a => {
+  if (WALLET) Object.assign(a, { href: `https://etherscan.io/address/${WALLET}`, target: "_blank", rel: "noopener" });
+  else a.classList.add("hidden");
+});
 const sup = $("#support");
 $$("[data-support]").forEach(b => b.addEventListener("click", () => sup.classList.add("on")));
 sup.addEventListener("click", e => (e.target === sup || e.target.closest("[data-close]")) && sup.classList.remove("on"));
 addEventListener("keydown", e => e.key === "Escape" && sup.classList.remove("on"));
 $("[data-copy-wallet]").addEventListener("click", async e => {
+  if (!WALLET) return;
   const b = e.currentTarget;
   try { await navigator.clipboard.writeText(WALLET); } catch (err) {}
   b.textContent = "Copied ✓"; b.classList.add("ok"); setTimeout(() => { b.textContent = "Copy"; b.classList.remove("ok"); }, 1800);
 });
 
-// official X embed for the lore tweet, loaded only when that section gets close (styled quote until then)
-{
-  const xo = new IntersectionObserver(es => {
-    if (!es.some(e => e.isIntersecting)) return;
-    xo.disconnect();
-    const s = document.createElement("script"); s.src = "https://platform.twitter.com/widgets.js"; s.async = true; s.charset = "utf-8"; document.body.append(s);
-  }, { rootMargin: "600px 0px" });
-  xo.observe($("#origin"));
-}
 </script>
 </body>
 </html>
