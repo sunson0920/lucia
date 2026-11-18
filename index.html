@@ -1,510 +1,609 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#110d21">
-  <meta name="description" content="Lucia — an Ethereum meme token built for the community.">
-  <title>Lucia ($LUCIA)</title>
-  <link rel="icon" href="logo.png" type="image/png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      color-scheme: dark;
-      --ink: #110d21;
-      --paper: #fff7ea;
-      --pink: #ff4d9d;
-      --orange: #ffb34a;
-      --blue: #70dcff;
-      --muted: #b6adc6;
-      --mono: "DM Mono", monospace;
-      --display: "Outfit", sans-serif;
-    }
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LUCIA · Main Character</title>
+<meta name="description" content="Millions will play. One name on every screen. Lucia. A Solana memecoin site built by random holders.">
+<meta property="og:title" content="LUCIA · Main Character">
+<meta property="og:description" content="Millions will play. One name on every screen.">
+<meta property="og:image" content="https://luciaonsol.com/media/og.jpg">
+<meta property="og:url" content="https://luciaonsol.com/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@luciaeth_x">
+<meta name="twitter:image" content="https://luciaonsol.com/media/og.jpg">
+<link rel="icon" href="media/icon-64.png">
+<link rel="preload" as="image" href="media/posters/hero.jpg" fetchpriority="high">
+<link rel="preconnect" href="https://www.youtube-nocookie.com">
+<link rel="preconnect" href="https://www.youtube.com">
+<link rel="apple-touch-icon" href="media/icon-180.png">
+<link href="fonts/fonts.css" rel="stylesheet">
+<style>
+:root{
+  --night:#0a0614; --deep:#140b25; --card:#1b1131; --line:rgba(255,255,255,.1);
+  --pink:#ff3d8b; --coral:#ff7a59; --gold:#ffc36b; --teal:#2de2e6; --violet:#b84dff;
+  --text:#f8f2ff; --muted:#bcaed8;
+  --sunset:linear-gradient(100deg,var(--gold) 0%,var(--coral) 32%,var(--pink) 66%,var(--violet) 100%);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;overflow-x:clip}
+body{background:var(--night);color:var(--text);font:400 16px/1.6 Inter,system-ui,sans-serif;overflow-x:clip;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.wrap{width:min(1200px,100% - 32px);margin-inline:auto}
+.display{font-family:Anton,Impact,sans-serif;font-weight:400;line-height:.88;text-transform:uppercase;letter-spacing:.005em}
+.script{font-family:Yellowtail,cursive;font-weight:400}
+.grad{background:var(--sunset);-webkit-background-clip:text;background-clip:text;color:transparent}
+.eyebrow{font-size:12px;font-weight:800;letter-spacing:.24em;text-transform:uppercase;color:var(--teal)}
+.hidden{display:none!important}
 
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      position: relative;
-      margin: 0;
-      background: var(--ink);
-      color: var(--paper);
-      font-family: var(--display);
-      -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
-    }
-    .noise-overlay {
-      position: fixed;
-      inset: 0;
-      z-index: 20;
-      pointer-events: none;
-      opacity: 0.32;
-      background:
-        linear-gradient(180deg, rgba(255,255,255,0.06), rgba(0,0,0,0.08)),
-        repeating-linear-gradient(
-          180deg,
-          rgba(255,255,255,0.08) 0,
-          rgba(255,255,255,0.08) 1px,
-          rgba(0,0,0,0.09) 2px,
-          rgba(0,0,0,0.09) 4px
-        ),
-        radial-gradient(circle at 20% 20%, rgba(255,255,255,0.14) 0 1px, transparent 1.3px),
-        radial-gradient(circle at 75% 35%, rgba(255,255,255,0.12) 0 1px, transparent 1.2px),
-        radial-gradient(circle at 45% 80%, rgba(255,255,255,0.14) 0 1px, transparent 1.4px);
-      background-size: 100% 100%, 100% 4px, 12px 12px, 11px 11px, 9px 9px;
-      mix-blend-mode: screen;
-      animation: screenFlicker 0.12s steps(2) infinite, scanlineDrift 0.3s linear infinite alternate;
-    }
-    a { color: inherit; text-decoration: none; }
-    button { font: inherit; }
-    .wrap { width: min(1200px, calc(100% - 48px)); margin-inline: auto; }
+/* ---------- nav ---------- */
+nav{position:fixed;inset:0 0 auto;z-index:60;transition:background .3s}
+nav.solid{background:rgba(10,6,20,.75);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;height:66px}
+.brand{font-family:Anton,sans-serif;font-size:26px;letter-spacing:.04em}
+.links{display:flex;gap:26px;font-size:14px;font-weight:600;color:var(--muted)}
+.links a:hover{color:var(--text)}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 22px;border-radius:999px;font-weight:800;font-size:15px;border:0;cursor:pointer;transition:transform .15s,box-shadow .2s;white-space:nowrap}
+.btn:hover{transform:translateY(-2px)}
+.btn-hot{background:var(--sunset);color:#1a0b1f;box-shadow:0 10px 40px -10px var(--pink)}
+.btn-ghost{background:rgba(255,255,255,.07);color:var(--text);border:1px solid rgba(255,255,255,.2);backdrop-filter:blur(8px)}
+.btn-sm{padding:10px 18px;font-size:14px}
 
-    .topline {
-      height: 34px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: var(--orange);
-      color: #24132b;
-      font: 500 10px var(--mono);
-      letter-spacing: .17em;
-      text-transform: uppercase;
-    }
-    header {
-      position: absolute;
-      z-index: 4;
-      top: 34px;
-      left: 0;
-      width: 100%;
-      border-bottom: 1px solid #fff3;
-    }
-    .nav {
-      height: 82px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .brand { display: flex; align-items: center; gap: 12px; }
-    .brand img {
-      width: 43px;
-      height: 43px;
-      object-fit: cover;
-      border: 1px solid #fff7;
-      border-radius: 50%;
-    }
-    .brand-name { font-size: 15px; font-weight: 800; letter-spacing: .04em; }
-    .brand-name small { display: block; margin-top: 2px; color: var(--orange); font: 10px var(--mono); letter-spacing: .13em; }
-    .nav-links { display: flex; align-items: center; gap: 34px; }
-    .nav-links a:not(.button) { color: #f9eff5; font-size: 13px; font-weight: 600; transition: color .2s; }
-    .nav-links a:not(.button):hover { color: var(--orange); }
-    .button {
-      display: inline-flex;
-      min-height: 46px;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      padding: 0 20px;
-      border: 1px solid #fff8;
-      border-radius: 3px;
-      background: #ffffff10;
-      color: white;
-      font-size: 12px;
-      font-weight: 800;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      transition: transform .2s, background .2s, border-color .2s;
-    }
-    .button:hover { transform: translateY(-2px); background: #ffffff20; border-color: white; }
-    .button.hot { border-color: var(--pink); background: var(--pink); color: #210f24; }
-    .button.hot:hover { border-color: #ff8abe; background: #ff8abe; }
-    .arrow { font-size: 17px; line-height: 0; }
+/* ---------- video layers (YouTube, muted loops) ---------- */
+.vid{position:absolute;inset:0;overflow:hidden;pointer-events:none;background:radial-gradient(120% 90% at 70% 20%,#4a1a55,#1a0d30 55%,var(--night));background-size:cover;background-position:center}
+.vid iframe{position:absolute;top:50%;left:50%;width:100%;height:100%;min-width:177.78vh;min-height:56.25vw;transform:translate(-50%,-50%) scale(1.18);border:0;opacity:0;transition:opacity 1s}
+.vid.on iframe{opacity:1}
+.grain:after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.12;mix-blend-mode:overlay;background:repeating-linear-gradient(0deg,#fff 0 1px,transparent 1px 3px)}
 
-    .hero {
-      position: relative;
-      min-height: min(820px, 100svh);
-      min-height: max(720px, min(820px, 100svh));
-      overflow: hidden;
-      display: flex;
-      align-items: flex-end;
-      background: #392848;
-    }
-    .hero-art {
-      position: absolute;
-      inset: 0;
-      background-image: url("banner.png");
-      background-size: cover;
-      background-position: center 38%;
-      transform: scale(1.015);
-      animation: reveal 1.2s ease-out both;
-    }
-    .hero::after {
-      position: absolute;
-      inset: 0;
-      content: "";
-      background:
-        linear-gradient(90deg, #130e22 0%, #130e22e8 28%, #130e2290 52%, #130e2220 100%),
-        linear-gradient(0deg, #130e22 0%, transparent 36%, #130e2238 100%);
-    }
-    .hero-content { position: relative; z-index: 1; padding: 170px 0 82px; max-width: 720px; }
-    .eyebrow {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      color: var(--orange);
-      font: 500 11px var(--mono);
-      letter-spacing: .19em;
-      text-transform: uppercase;
-    }
-    .eyebrow::before { width: 32px; height: 1px; content: ""; background: currentColor; }
-    h1 {
-      margin: 24px 0 17px;
-      font-size: clamp(68px, 10.4vw, 136px);
-      font-weight: 900;
-      letter-spacing: -.075em;
-      line-height: .78;
-      text-transform: uppercase;
-      text-shadow: 0 7px 40px #150b28a3;
-    }
-    h1 span { display: block; color: var(--pink); }
-    .hero-sub {
-      margin: 28px 0 0;
-      color: #f4eaf3;
-      font-size: clamp(16px, 2vw, 20px);
-      font-weight: 500;
-    }
-    .hero-copy { max-width: 435px; margin: 10px 0 28px; color: #dfd4e4; font-size: 14px; line-height: 1.75; }
-    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
-    .hero-note { margin-top: 28px; color: #d4c9d9; font: 10px var(--mono); letter-spacing: .1em; text-transform: uppercase; }
-    .hero-note b { color: var(--blue); font-weight: 500; }
-    .scroll-mark {
-      position: absolute;
-      z-index: 2;
-      right: max(24px, calc((100vw - 1200px) / 2));
-      bottom: 80px;
-      writing-mode: vertical-rl;
-      color: #fff9;
-      font: 10px var(--mono);
-      letter-spacing: .2em;
-    }
+/* ---------- hero ---------- */
+.hero{position:relative;height:100svh;min-height:620px;display:flex;align-items:flex-end;isolation:isolate;overflow:hidden}
+.hero .vid{z-index:-3}
+.hero:before{content:"";position:absolute;inset:0;z-index:-2;background:
+  linear-gradient(180deg,rgba(10,6,20,.5),rgba(10,6,20,0) 28%,rgba(10,6,20,.15) 60%,var(--night) 100%),
+  linear-gradient(90deg,rgba(10,6,20,.75),rgba(10,6,20,0) 65%)}
+.hero-in{padding-bottom:7svh}
+.hero h1{font-size:clamp(110px,24vw,340px);filter:drop-shadow(0 12px 60px rgba(255,61,139,.45))}
+.hero .tag{font-size:clamp(34px,5vw,64px);color:var(--gold);display:inline-block;transform:rotate(-4deg);margin:-.2em 0 .3em .1em}
+.hero-row{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin-top:8px}
+.sound{display:inline-flex;align-items:center;gap:10px;padding:10px 16px;border-radius:999px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.2);color:#fff;font:800 14px Inter,sans-serif;cursor:pointer;transition:transform .15s,border-color .2s;white-space:nowrap}
+.sound:hover{transform:translateY(-2px)}
+.sound:not(.off){border-color:var(--gold)}
+.sound .bars{display:flex;gap:3px;align-items:flex-end;height:16px}
+.sound .bars i{width:3px;background:var(--gold);border-radius:2px;animation:eq .9s ease-in-out infinite}
+.sound .bars i:nth-child(2){animation-delay:.2s}.sound .bars i:nth-child(3){animation-delay:.4s}.sound .bars i:nth-child(4){animation-delay:.1s}
+.sound.off .bars i{animation:none;height:3px!important}
+@keyframes eq{0%,100%{height:4px}50%{height:18px}}
+.btn img{width:22px;height:22px;border-radius:6px;flex:none}
+.scroll-cue{position:absolute;left:50%;bottom:18px;transform:translateX(-50%);font-size:11px;letter-spacing:.3em;color:var(--muted);text-transform:uppercase;animation:bob 2s ease-in-out infinite}
+@keyframes bob{50%{transform:translate(-50%,6px)}}
 
-    .ticker {
-      position: relative;
-      z-index: 2;
-      border-block: 1px solid #ffffff20;
-      background: #1b142c;
-      overflow: hidden;
-    }
-    .ticker-track {
-      min-height: 58px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: clamp(20px, 5vw, 70px);
-      color: #e9ddeb;
-      font: 10px var(--mono);
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      white-space: nowrap;
-    }
-    .ticker strong { color: var(--pink); font-weight: 500; }
-    .spark { color: var(--orange); font-size: 15px; }
+/* ---------- marquee ---------- */
+.marquee{overflow:hidden;background:var(--sunset);padding:14px 0;transform:rotate(-1.2deg) scale(1.03);margin:-10px 0 0;position:relative;z-index:2}
+.track{display:flex;gap:36px;width:max-content;animation:run 30s linear infinite}
+.track span{font-family:Anton,sans-serif;font-size:28px;text-transform:uppercase;color:#1a0b1f;white-space:nowrap}
+@keyframes run{to{transform:translateX(-50%)}}
 
-    .intro { padding: 112px 0 118px; }
-    .section-label { color: var(--pink); font: 500 10px var(--mono); letter-spacing: .2em; text-transform: uppercase; }
-    .intro-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 11%; align-items: center; }
-    .intro h2, .community h2 {
-      margin: 18px 0 20px;
-      font-size: clamp(39px, 5.3vw, 66px);
-      font-weight: 800;
-      letter-spacing: -.055em;
-      line-height: .98;
-      text-transform: uppercase;
-    }
-    .intro h2 em { color: var(--orange); font-style: normal; }
-    .intro-text { max-width: 570px; color: var(--muted); font-size: 15px; line-height: 1.85; }
-    .intro-text p { margin: 0 0 17px; }
-    .motto {
-      display: inline-block;
-      margin-top: 6px;
-      color: var(--blue);
-      font: 11px var(--mono);
-      letter-spacing: .12em;
-      text-transform: uppercase;
-    }
+/* ---------- thesis ---------- */
+.thesis{padding:150px 0 90px}
+.big{font-size:clamp(54px,9.5vw,150px)}
+.thesis .big span{display:block}
+.lead{font-size:clamp(18px,1.8vw,22px);color:#e3d8f6;max-width:640px;margin-top:28px}
+.numbers{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:80px}
+.num{padding:30px 28px;border-radius:26px;background:linear-gradient(180deg,var(--card),var(--deep));border:1px solid var(--line)}
+.num b{display:block;font-family:Anton,sans-serif;font-weight:400;font-size:clamp(54px,6vw,86px);line-height:1}
+.num p{color:var(--muted);margin-top:10px;font-size:15px}
+.num small{display:block;margin-top:8px;font-size:11px;color:rgba(188,174,216,.6)}
 
-    .gallery { padding: 92px 0 104px; background: #171123; }
-    .gallery-heading { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; margin-bottom: 32px; }
-    .gallery h2 { margin: 15px 0 0; font-size: clamp(40px, 5vw, 62px); font-weight: 800; letter-spacing: -.055em; line-height: .95; text-transform: uppercase; }
-    .gallery h2 span { color: var(--pink); }
-    .gallery-intro { max-width: 290px; margin: 0 0 3px; color: var(--muted); font-size: 13px; line-height: 1.7; }
-    .gallery-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
-    .gallery-card { position: relative; margin: 0; aspect-ratio: 1.18; overflow: hidden; background: #2a1c38; transition: box-shadow .35s ease; }
-    .gallery-card::before { position: absolute; z-index: 1; inset: -35% -65%; content: ""; background: linear-gradient(110deg, transparent 43%, #70dcff0a 47%, #ffb9d87a 50%, #70dcff24 53%, transparent 57%); mix-blend-mode: screen; pointer-events: none; transform: translateX(-70%); animation: gallery-shimmer 7s ease-in-out infinite; }
-    .gallery-card::after { position: absolute; z-index: 2; inset: 35% 0 0; content: ""; background: linear-gradient(transparent, #120e21d9); pointer-events: none; }
-    .gallery-card img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .45s ease, filter .45s ease; }
-    .gallery-card:hover { box-shadow: 0 0 24px #ff4d9d3b; }
-    .gallery-card:hover img { transform: scale(1.055); filter: saturate(1.15); }
-    .gallery-card figcaption { position: absolute; z-index: 3; right: 15px; bottom: 14px; left: 15px; display: flex; align-items: flex-end; justify-content: space-between; gap: 8px; color: white; font-size: 13px; font-weight: 700; }
-    .gallery-card figcaption span { color: #ffb9d8; font: 9px var(--mono); letter-spacing: .1em; }
-    .gallery-card:nth-child(2)::before { animation-delay: 1.4s; }
-    .gallery-card:nth-child(3)::before { animation-delay: 2.8s; }
-    .gallery-card:nth-child(4)::before { animation-delay: 4.2s; }
+/* ---------- cinematic bands ---------- */
+.band{position:relative;height:92svh;min-height:520px;display:flex;align-items:center;isolation:isolate;overflow:hidden}
+.band .vid{z-index:-2}
+.band:before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,var(--night) 0%,rgba(10,6,20,.15) 22%,rgba(10,6,20,.15) 70%,var(--night) 100%),linear-gradient(90deg,rgba(10,6,20,.7),transparent 60%)}
+.band.right:before{background:linear-gradient(180deg,var(--night) 0%,rgba(10,6,20,.15) 22%,rgba(10,6,20,.15) 70%,var(--night) 100%),linear-gradient(270deg,rgba(10,6,20,.7),transparent 60%)}
+.band.right .wrap{text-align:right}
+.band h2{font-size:clamp(56px,10vw,160px)}
+.band p{font-size:clamp(17px,1.7vw,21px);color:#efe6ff;max-width:520px;margin-top:18px;text-shadow:0 2px 20px rgba(0,0,0,.6)}
+.band.right p{margin-left:auto}
+.band .script{font-size:clamp(30px,4vw,52px);color:var(--gold);display:block;margin-bottom:8px}
 
-    .profile {
-      position: relative;
-      padding: 100px 0;
-      overflow: hidden;
-      background:
-        radial-gradient(ellipse at 87% 35%, #ae347157 0, transparent 37%),
-        linear-gradient(120deg, #20152f, #24152b 55%, #3b1a3b);
-    }
-    .profile::before {
-      position: absolute;
-      inset: 0;
-      content: "";
-      opacity: .14;
-      background-image: linear-gradient(#ffffff12 1px, transparent 1px), linear-gradient(90deg, #ffffff12 1px, transparent 1px);
-      background-size: 48px 48px;
-      mask-image: linear-gradient(90deg, transparent, black);
-    }
-    .profile-grid { position: relative; display: grid; grid-template-columns: .8fr 1fr; gap: 12%; align-items: center; }
-    .portrait-wrap { position: relative; max-width: 420px; }
-    .portrait-wrap::before {
-      position: absolute;
-      inset: -12px 12px 12px -12px;
-      border: 1px solid #ff4d9d99;
-      content: "";
-    }
-    .portrait-wrap img { position: relative; display: block; width: 100%; aspect-ratio: 1; object-fit: cover; filter: saturate(.88); }
-    .portrait-tag { position: absolute; z-index: 1; right: -18px; bottom: 22px; padding: 11px 15px; background: var(--orange); color: #24132b; font: 10px var(--mono); letter-spacing: .12em; }
-    .profile h2 { margin: 16px 0 18px; font-size: clamp(43px, 6vw, 72px); letter-spacing: -.06em; line-height: .9; text-transform: uppercase; }
-    .profile h2 span { color: var(--pink); }
-    .profile p { max-width: 480px; color: #c9b8cb; font-size: 15px; line-height: 1.8; }
-    .stats { display: flex; flex-wrap: wrap; gap: 35px; margin-top: 34px; padding-top: 24px; border-top: 1px solid #ffffff24; }
-    .stats div { color: #bfb0c4; font: 10px var(--mono); letter-spacing: .09em; text-transform: uppercase; }
-    .stats b { display: block; margin-bottom: 7px; color: var(--paper); font: 700 17px var(--display); letter-spacing: .02em; }
+/* ---------- reel ---------- */
+.reel-sec{padding:120px 0 60px}
+.head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:40px;flex-wrap:wrap}
+.head h2{font-size:clamp(50px,7.5vw,110px)}
+.head p{max-width:420px;color:var(--muted)}
+.reel{display:grid;grid-template-columns:repeat(6,1fr);gap:14px}
+.tile{position:relative;grid-column:span 2;aspect-ratio:9/12;border-radius:22px;overflow:hidden;border:1px solid var(--line);cursor:pointer;isolation:isolate;background:var(--deep)}
+.tile.wide{grid-column:span 4;aspect-ratio:auto}
+.tile .vid iframe{transform:translate(-50%,-50%) scale(1.25)}
+.tile:after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(0deg,rgba(10,6,20,.9),rgba(10,6,20,0) 50%)}
+.tile .meta{position:absolute;left:20px;right:20px;bottom:18px;z-index:2}
+.tile h4{font-family:Anton,sans-serif;font-weight:400;font-size:clamp(26px,2.6vw,40px);text-transform:uppercase;line-height:1}
+.tile .src{font-size:12px;color:var(--muted);margin-top:6px;display:flex;align-items:center;gap:8px}
+.tile .src:before{content:"";width:8px;height:8px;border-radius:50%;background:var(--pink);box-shadow:0 0 10px var(--pink)}
+.tile .hint{position:absolute;top:14px;right:14px;z-index:2;font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;padding:6px 10px;border-radius:999px;background:rgba(10,6,20,.6);border:1px solid var(--line)}
 
-    .community { padding: 105px 0 100px; text-align: center; }
-    .community .section-label { color: var(--blue); }
-    .community h2 { max-width: 750px; margin: 18px auto; }
-    .community h2 span { color: var(--pink); }
-    .community p { max-width: 500px; margin: 0 auto 27px; color: var(--muted); font-size: 14px; line-height: 1.8; }
-    .community-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
-    .market { padding: 92px 0 100px; background: #171123; }
-    .market-heading { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; margin-bottom: 28px; }
-    .market h2 { margin: 15px 0 0; font-size: clamp(40px, 5vw, 62px); font-weight: 800; letter-spacing: -.055em; line-height: .95; text-transform: uppercase; }
-    .market h2 span { color: var(--pink); }
-    .market-address { color: var(--muted); font: 10px var(--mono); letter-spacing: .06em; overflow-wrap: anywhere; }
-    .market-frame { display: block; width: 100%; height: 600px; border: 1px solid #ffffff20; background: #110d21; }
-    footer { border-top: 1px solid #ffffff20; padding: 25px 0 30px; color: #8d8399; font: 10px var(--mono); letter-spacing: .04em; }
-    .footer-row { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 14px; }
-    .footer-disclaimer { max-width: 650px; line-height: 1.7; }
-    .footer-disclaimer strong { color: #cfc3d3; font-weight: 500; }
+/* player modal */
+.modal{position:fixed;inset:0;z-index:90;background:rgba(5,3,10,.95);display:none;place-items:center;padding:16px}
+.modal.on{display:grid}
+.modal .box{width:min(1200px,100%);aspect-ratio:16/9;border-radius:18px;overflow:hidden;background:#000}
+.modal iframe{width:100%;height:100%;border:0}
+.modal .x{position:absolute;top:16px;right:16px;width:46px;height:46px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:#fff;font-size:22px;cursor:pointer}
 
-    @keyframes reveal { from { opacity: .55; transform: scale(1.06); } to { opacity: 1; transform: scale(1.015); } }
-    @keyframes screenFlicker {
-      0% { opacity: 0.28; transform: translateY(0); }
-      20% { opacity: 0.34; transform: translateY(-1px); }
-      40% { opacity: 0.26; transform: translateY(1px); }
-      60% { opacity: 0.36; transform: translateY(-1px); }
-      80% { opacity: 0.3; transform: translateY(1px); }
-      100% { opacity: 0.32; transform: translateY(0); }
-    }
-    @keyframes scanlineDrift {
-      0% { background-position: 0 0, 0 0, 0 0, 0 0, 0 0; }
-      100% { background-position: 0 0, 0 6px, 0 0, 0 0, 0 0; }
-    }
-    @keyframes gallery-shimmer {
-      0%, 15% { transform: translateX(-70%); }
-      55%, 100% { transform: translateX(70%); }
-    }
-    @media (max-width: 760px) {
-      .wrap { width: min(100% - 36px, 560px); }
-      .nav { height: 70px; }
-      .nav-links { gap: 14px; }
-      .nav-links > a:not(.button) { display: none; }
-      .nav-links .button { min-height: 39px; padding: 0 12px; font-size: 10px; }
-      .brand img { width: 38px; height: 38px; }
-      .hero { min-height: 720px; }
-      .hero-art { background-position: 57% center; }
-      .hero::after { background: linear-gradient(0deg, #130e22 0%, #130e22e8 18%, #130e2265 60%, #130e2240 100%); }
-      .hero-content { padding: 0 0 62px; }
-      h1 { font-size: clamp(67px, 17vw, 105px); }
-      .hero-copy { max-width: 390px; }
-      .scroll-mark { display: none; }
-      .ticker-track { min-height: 53px; justify-content: flex-start; overflow: hidden; gap: 22px; }
-      .ticker-track span:nth-of-type(n+4) { display: none; }
-      .intro { padding: 78px 0; }
-      .intro-grid, .profile-grid { grid-template-columns: 1fr; gap: 37px; }
-      .intro h2 { max-width: 440px; }
-      .gallery { padding: 76px 0 82px; }
-      .gallery-heading { align-items: flex-start; flex-direction: column; gap: 14px; margin-bottom: 24px; }
-      .gallery-intro { max-width: 420px; }
-      .gallery-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
-      .gallery-card { aspect-ratio: .95; }
-      .gallery-card figcaption { right: 11px; bottom: 11px; left: 11px; flex-direction: column; align-items: flex-start; gap: 5px; }
-      .profile { padding: 75px 0; }
-      .portrait-wrap { width: min(78%, 370px); margin: 0 auto; }
-      .profile-content { grid-row: 1; }
-      .profile h2 { font-size: 58px; }
-      .community { padding: 78px 0; }
-      .market { padding: 76px 0 82px; }
-      .market-heading { align-items: flex-start; flex-direction: column; gap: 14px; }
-      .market-frame { height: 480px; }
-      footer { padding-bottom: 24px; }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
-    }
-  </style>
+/* gallery */
+.gallery{columns:3 260px;column-gap:14px}
+.gallery figure{break-inside:avoid;margin-bottom:14px;border-radius:18px;overflow:hidden;border:1px solid var(--line);cursor:zoom-in}
+.gallery img{width:100%;height:auto;display:block;transition:transform .5s}
+.gallery figure:hover img{transform:scale(1.04)}
+.lightbox{position:fixed;inset:0;z-index:90;background:rgba(5,3,10,.95);display:none;place-items:center;padding:16px;cursor:zoom-out}
+.lightbox.on{display:grid}
+.lightbox img{max-height:92svh;max-width:100%;border-radius:14px}
+
+/* icons, header CTA, support modal */
+.ico{width:20px;height:20px;flex:none}
+.nav-cta{display:flex;gap:8px;align-items:center}
+.support-btn{border-color:rgba(255,61,139,.55)}
+.modal.support{z-index:95}
+.sbox{position:relative;width:min(560px,100%);border-radius:24px;background:linear-gradient(180deg,var(--card),var(--deep));border:1px solid var(--line);padding:34px 28px 26px}
+.sbox h3{font-size:clamp(40px,7vw,64px);margin:6px 0 12px}
+.sbox p{color:#e3d8f6}
+.sbox .ca{margin:18px 0 10px}
+.sbox .solscan{font-size:14px;color:var(--teal)}
+.sbox .fine{font-size:12px;color:var(--muted);margin-top:14px}
+.sbox .x{position:absolute;top:12px;right:12px}
+@media (max-width:560px){.support-btn span{display:none}.nav-cta .btn{padding:9px 13px}}
+
+/* origin */
+.origin{display:grid;grid-template-columns:1.1fr 1fr;gap:40px;align-items:center}
+.origin .note{font-size:12px;color:var(--muted);margin-top:14px;opacity:.8}
+.tweet{min-width:0;display:flex;justify-content:center}
+.tweet blockquote{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px 24px;font-size:20px;max-width:520px;width:100%}
+.tweet blockquote a{color:var(--teal)}
+@media (max-width:900px){.origin{grid-template-columns:1fr}}
+
+/* countdown */
+.release{position:relative;border-radius:34px;overflow:hidden;padding:90px 24px;text-align:center;isolation:isolate;background:
+  radial-gradient(60% 120% at 50% 120%,rgba(255,61,139,.6),transparent 70%),
+  radial-gradient(40% 80% at 50% 110%,rgba(255,195,107,.7),transparent 70%),
+  linear-gradient(180deg,#0f0820,#2a1040)}
+.release:after{content:"";position:absolute;left:-10%;right:-10%;bottom:0;height:45%;z-index:-1;background:repeating-linear-gradient(90deg,rgba(255,255,255,.08) 0 1px,transparent 1px 64px),repeating-linear-gradient(0deg,rgba(255,255,255,.08) 0 1px,transparent 1px 32px);transform:perspective(380px) rotateX(62deg);transform-origin:bottom}
+.release h2{font-size:clamp(46px,7vw,100px)}
+.count{display:flex;justify-content:center;gap:clamp(8px,2.6vw,30px);margin-top:30px}
+.count div{min-width:clamp(56px,13vw,150px);padding:16px 6px;border-radius:18px;background:rgba(10,6,20,.55);border:1px solid var(--line);backdrop-filter:blur(8px)}
+.count b{display:block;font-family:Anton,sans-serif;font-weight:400;font-size:clamp(40px,7vw,92px);line-height:1;font-variant-numeric:tabular-nums}
+.count small{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+
+/* token block */
+.token{padding:120px 0}
+.tok{display:grid;grid-template-columns:1.05fr 1fr;gap:18px}
+.tok>*{min-width:0}
+.panel{border-radius:26px;background:var(--card);border:1px solid var(--line);padding:28px}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border-radius:18px;overflow:hidden;margin:20px 0}
+.stat{background:var(--deep);padding:16px 18px;min-width:0}
+.stat small{display:block;font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.stat strong{display:block;font-size:22px;font-weight:800;margin-top:2px;font-variant-numeric:tabular-nums}
+.up{color:#4cf0a0}.down{color:#ff6b8a}
+.ca{display:flex;align-items:center;gap:10px;padding:8px 8px 8px 16px;border-radius:14px;background:var(--night);border:1px solid var(--line);font:500 13px ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--muted)}
+.ca span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0;flex:1}
+.ca button{flex:none;background:var(--card);color:var(--text);border:1px solid var(--line);border-radius:9px;padding:8px 12px;font:700 12px Inter,sans-serif;cursor:pointer}
+.ca button.ok{background:var(--teal);color:#06202a}
+.venues{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px}
+.venues .btn{justify-content:center}
+.chart{border-radius:26px;overflow:hidden;border:1px solid var(--line);min-height:460px;background:var(--deep)}
+.chart iframe{width:100%;height:100%;min-height:460px;border:0;display:block}
+.howto{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:18px;counter-reset:s}
+.howto div{padding:18px;border-radius:18px;background:var(--deep);border:1px solid var(--line);font-size:14px;color:var(--muted)}
+.howto div:before{counter-increment:s;content:"0" counter(s);display:block;font-family:Anton,sans-serif;font-size:28px;color:var(--pink);line-height:1;margin-bottom:6px}
+.howto b{color:var(--text);display:block}
+
+/* footer */
+footer{border-top:1px solid var(--line);padding:46px 0 64px;color:var(--muted);font-size:13px}
+footer .wrap{display:grid;gap:12px}
+footer .made{font-family:Yellowtail,cursive;font-size:30px;color:var(--gold)}
+footer strong{color:var(--text)}
+
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .9s ease,transform .9s ease}
+.reveal.in{opacity:1;transform:none}
+
+@media (max-width:900px){
+  .links{display:none}
+  .numbers,.tok{grid-template-columns:1fr}
+  .tile,.tile.wide{grid-column:span 3;aspect-ratio:9/13}
+  .tile.wide{grid-column:span 6;aspect-ratio:16/10}
+  .howto{grid-template-columns:1fr 1fr}
+  .thesis{padding:110px 0 70px}
+}
+@media (max-width:560px){
+  .tile,.tile.wide{grid-column:span 6;aspect-ratio:4/5}
+  .tile.wide{aspect-ratio:16/11}
+  .sound{padding:8px 11px;gap:6px}
+  #soundTxt,.sound .bars,.hide-sm{display:none}
+  .brand{font-size:22px}
+  .nav-cta{gap:6px}
+  .hero-row .btn{padding:11px 16px;font-size:14px}
+  .panel{padding:18px}
+  .stat{padding:14px}
+  .stat strong{font-size:18px}
+  .venues{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){.track,.scroll-cue{animation:none}.reveal{opacity:1;transform:none}}
+</style>
 </head>
 <body>
-  <div class="noise-overlay" aria-hidden="true"></div>
-  <div class="topline">An Ethereum community token &nbsp;·&nbsp; Built for the culture</div>
-  <header>
-    <nav class="nav wrap" aria-label="Main navigation">
-      <a class="brand" href="#home" aria-label="Lucia home">
-        <img src="logo.png" alt="">
-        <span class="brand-name">LUCIA<small>ETHEREUM MEME TOKEN</small></span>
-      </a>
-      <div class="nav-links">
-        <a href="#story">The story</a>
-        <a href="#gallery">Gallery</a>
-        <a href="#lucia">Lucia</a>
-        <a class="button hot" href="https://app.uniswap.org/#/swap?inputCurrency=eth&amp;outputCurrency=0xede6a93741f2466decfd709158e235fbfaf001a1" target="_blank" rel="noopener noreferrer">Buy $LUCIA <span class="arrow">↗</span></a>
-      </div>
-    </nav>
-  </header>
 
-  <main>
-    <section class="hero" id="home">
-      <div class="hero-art" role="img" aria-label="Lucia portrait"></div>
-      <div class="wrap">
-        <div class="hero-content">
-          <div class="eyebrow">Ethereum meme token</div>
-          <h1>The city<span>is ours.</span></h1>
-          <p class="hero-sub">Meet Lucia. The next chapter is yours to write.</p>
-          <p class="hero-copy">Pull up, find your people, and make some noise.</p>
-          <div class="hero-actions">
-            <a class="button hot" href="https://app.uniswap.org/#/swap?inputCurrency=eth&amp;outputCurrency=0xede6a93741f2466decfd709158e235fbfaf001a1" target="_blank" rel="noopener noreferrer">Buy $LUCIA <span class="arrow">↗</span></a>
-            <a class="button" href="https://x.com/luciaeth_x" target="_blank" rel="noopener noreferrer">Follow on X <span class="arrow">↗</span></a>
-          </div>
-          <div class="hero-note">Token <b>$LUCIA</b> &nbsp;·&nbsp; Chain <b>Ethereum</b></div>
-        </div>
-      </div>
-      <div class="scroll-mark" aria-hidden="true">SCROLL TO EXPLORE &nbsp; ↓</div>
-    </section>
+<nav id="nav">
+  <div class="wrap nav-in">
+    <a class="brand grad" href="#top">LUCIA</a>
+    <div class="links"><a href="#thesis">The thesis</a><a href="#reel">Her scenes</a><a href="#release">Release</a><a href="#token">$LUCIA</a></div>
+    <div class="nav-cta"><button class="sound off" id="sound" type="button" aria-label="Turn sound on"><span id="soundIc">🔇</span><span class="bars"><i></i><i></i><i></i><i></i></span><span id="soundTxt">Sound</span></button><button class="btn btn-ghost btn-sm support-btn" type="button" data-support>💗 <span>Support the CTO</span></button><a class="btn btn-hot btn-sm" data-buy href="#">Buy<span class="hide-sm"> $Lucia</span></a></div>
+  </div>
+</nav>
 
-    <div class="ticker" aria-label="Lucia token highlights">
-      <div class="ticker-track wrap">
-        <span><strong>$LUCIA</strong> on Ethereum</span><span class="spark">✳</span>
-        <span>One community. One voice.</span><span class="spark">✳</span>
-        <span>Stay wild, stay Lucia</span>
+<!-- HERO -->
+<header class="hero grain" id="top">
+  <div class="vid" data-yt="hero" style="background-image:url(media/posters/hero.jpg)"></div>
+  <div class="wrap hero-in">
+    <div class="eyebrow">Vice City · November 19, 2026</div>
+    <h1 class="display grad">Lucia</h1>
+    <div class="tag script">main character energy</div>
+    <div class="hero-row">
+      <a class="btn btn-hot" data-buy href="#"><img src="media/logos/jup.ag.png" alt="">Buy $Lucia</a>
+      <a class="btn btn-ghost" data-pump href="#"><img src="media/logos/pump.fun.png" alt="">Pump.fun</a>
+      <a class="btn btn-ghost" data-fomo href="#"><img src="media/logos/fomo.family.png" alt="">Fomo</a>
+      <a class="btn btn-ghost" data-x href="#"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>Follow</a>
+      <a class="btn btn-ghost" data-tg href="#"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12" fill="#2AABEE"/><path fill="#fff" d="M5.4 11.7l11.2-4.3c.5-.2 1 .1.8.9l-1.9 9c-.1.6-.5.8-1.1.5l-3-2.2-1.4 1.4c-.2.2-.3.3-.6.3l.2-3.1 5.6-5c.2-.2-.1-.3-.4-.1l-6.9 4.3-3-.9c-.6-.2-.7-.6.5-.8z"/></svg>Telegram</a>
+    </div>
+  </div>
+  <div class="scroll-cue">scroll</div>
+</header>
+
+<div class="marquee" aria-hidden="true"><div class="track" id="track"></div></div>
+
+<!-- THESIS -->
+<section class="thesis" id="thesis">
+  <div class="wrap">
+    <div class="eyebrow reveal">The thesis</div>
+    <h2 class="display big reveal" style="margin-top:14px">
+      <span>Millions</span><span class="grad">will play</span><span>as her.</span>
+    </h2>
+    <p class="lead reveal">For the first time in the modern era of Grand Theft Auto, the lead is a woman. The biggest launch in entertainment history puts one name on every screen on the planet. That name is <b>Lucia</b>.</p>
+    <div class="numbers">
+      <div class="num reveal"><b class="grad">210M+</b><p>copies of GTA V sold. The audience is already here, waiting.</p><small>Take-Two Interactive</small></div>
+      <div class="num reveal"><b class="grad">90M+</b><p>views of Trailer 1 in 24 hours, the biggest non-music debut YouTube had ever seen.</p><small>Rockstar Games, Dec 2023</small></div>
+      <div class="num reveal"><b class="grad">475M</b><p>views of Trailer 2 across platforms in its first 24 hours.</p><small>Rockstar Games, May 2025</small></div>
+    </div>
+  </div>
+</section>
+
+<!-- BAND 1 -->
+<section class="band grain" id="band1">
+  <div class="vid" data-yt="band1" style="background-image:url(media/posters/band1.jpg)"></div>
+  <div class="wrap reveal">
+    <span class="script">chapter one</span>
+    <h2 class="display">Out of<br><span class="grad">the cell</span></h2>
+    <p>She walks out of a Leonida prison and straight into Vice City. Everything after that is hers.</p>
+  </div>
+</section>
+
+<!-- REEL -->
+<section class="reel-sec" id="reel">
+  <div class="wrap">
+    <div class="head reveal">
+      <div><div class="eyebrow">Official footage · only her scenes</div><h2 class="display">Her <span class="grad">scenes</span></h2></div>
+      <p>Every Lucia moment from the official trailers, streamed from Rockstar Games' YouTube. Tap any scene for sound.</p>
+    </div>
+    <div class="reel" id="reelGrid"></div>
+  </div>
+</section>
+
+<!-- BAND 2 -->
+<section class="band right grain" id="band2">
+  <div class="vid" data-yt="band2" style="background-image:url(media/posters/band2.jpg)"></div>
+  <div class="wrap reveal">
+    <span class="script">ride or die</span>
+    <h2 class="display">Vice City<br><span class="grad">is hers</span></h2>
+    <p>Sirens behind her, the city ahead. The face of the year, the face of the decade.</p>
+  </div>
+</section>
+
+<!-- GALLERY (auto: media/gallery/1.jpg, 2.jpg …) -->
+<section id="gallerySection" class="reel-sec hidden">
+  <div class="wrap">
+    <div class="head reveal"><div><div class="eyebrow">Gallery</div><h2 class="display">Full <span class="grad">Lucia</span></h2></div></div>
+    <div class="gallery" id="gallery"></div>
+  </div>
+</section>
+
+<!-- ORIGIN -->
+<section id="origin" style="padding:40px 0 70px">
+  <div class="wrap origin reveal">
+    <div>
+      <div class="eyebrow">Lore</div>
+      <h2 class="display" style="font-size:clamp(46px,7vw,100px)"><span class="grad">Lucia / TTWO</span></h2>
+      <p class="lead">September 1, 2026.</p>
+      <p class="note">Ansem is not affiliated with $LUCIA.</p>
+    </div>
+    <div class="tweet">
+      <blockquote class="twitter-tweet" data-theme="dark" data-dnt="true" data-conversation="none"><p lang="en" dir="ltr">lucia/ttwo would go crazy</p>&mdash; Ansem (@blknoiz06) <a href="https://x.com/blknoiz06/status/2094826177303138332">September 1, 2026</a></blockquote>
+    </div>
+  </div>
+</section>
+
+<!-- RELEASE -->
+<section id="release" style="padding:60px 0">
+  <div class="wrap">
+    <div class="release reveal">
+      <div class="eyebrow" id="relEyebrow">Grand Theft Auto VI · November 19, 2026</div>
+      <h2 class="display" id="relTitle" style="margin-top:12px">She lands in</h2>
+      <div class="count" id="count">
+        <div><b data-c="d">00</b><small>Days</small></div><div><b data-c="h">00</b><small>Hours</small></div>
+        <div><b data-c="m">00</b><small>Min</small></div><div><b data-c="s">00</b><small>Sec</small></div>
       </div>
     </div>
+  </div>
+</section>
 
-    <section class="intro" id="story">
-      <div class="wrap intro-grid">
-        <div>
-          <div class="section-label">01 / The story</div>
-          <h2>Born for the <em>bright lights.</em></h2>
+<!-- TOKEN (compact) -->
+<section class="token" id="token">
+  <div class="wrap">
+    <div class="head reveal"><div><div class="eyebrow">On Solana</div><h2 class="display">$<span class="grad">LUCIA</span></h2></div><p>The coin named after her. No dev, no team: this site was made by random holders.</p></div>
+    <div class="tok">
+      <div class="panel reveal">
+        <div class="ca"><span data-ca></span><button type="button" data-copy>Copy CA</button></div>
+        <div class="stats">
+          <div class="stat"><small>Market cap</small><strong data-s="mcap">–</strong></div>
+          <div class="stat"><small>24h</small><strong data-s="change">–</strong></div>
+          <div class="stat"><small>Liquidity</small><strong data-s="liq">–</strong></div>
+          <div class="stat"><small>Holders</small><strong data-holders>–</strong></div>
         </div>
-        <div class="intro-text">
-          <p>From sun-faded streets to a skyline that never sleeps, Lucia is made for the ones who move with confidence and keep their eyes on what’s next.</p>
-          <p>This is a community-led Ethereum meme token created for culture, momentum, and a bold internet story. No suits. No scripts. Just the crew.</p>
-          <span class="motto">The city is ours.</span>
+        <div class="venues">
+          <a class="btn btn-hot" data-buy href="#"><img src="media/logos/jup.ag.png" alt="">Jupiter</a>
+          <a class="btn btn-ghost" data-pump href="#"><img src="media/logos/pump.fun.png" alt="">Pump.fun</a>
+          <a class="btn btn-ghost" data-fomo href="#"><img src="media/logos/fomo.family.png" alt="">Fomo</a>
+          <a class="btn btn-ghost" data-chart href="#"><img src="media/logos/dexscreener.com.png" alt="">DexScreener</a>
+          <a class="btn btn-ghost" data-x href="#"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>X</a>
+          <a class="btn btn-ghost" data-tg href="#"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12" fill="#2AABEE"/><path fill="#fff" d="M5.4 11.7l11.2-4.3c.5-.2 1 .1.8.9l-1.9 9c-.1.6-.5.8-1.1.5l-3-2.2-1.4 1.4c-.2.2-.3.3-.6.3l.2-3.1 5.6-5c.2-.2-.1-.3-.4-.1l-6.9 4.3-3-.9c-.6-.2-.7-.6.5-.8z"/></svg>Telegram</a>
         </div>
       </div>
-    </section>
-
-    <section class="gallery" id="gallery">
-      <div class="wrap">
-        <div class="gallery-heading">
-          <div>
-            <div class="section-label">02 / The gallery</div>
-            <h2>After dark,<br><span>in the city.</span></h2>
-          </div>
-          <p class="gallery-intro">A few snapshots from Lucia’s world. Pick your favorite, then join the crew.</p>
-        </div>
-        <div class="gallery-grid">
-          <figure class="gallery-card">
-            <img src="1.jpg" alt="Lucia in motion" loading="lazy">
-            <figcaption>Midnight run <span>01 / LUCIA</span></figcaption>
-          </figure>
-          <figure class="gallery-card">
-            <img src="2.jpg" alt="Lucia in the spotlight" loading="lazy">
-            <figcaption>Bright lights <span>02 / LUCIA</span></figcaption>
-          </figure>
-          <figure class="gallery-card">
-            <img src="3.jpg" alt="Illustrated Lucia in a bold pose" loading="lazy">
-            <figcaption>Own the moment <span>03 / LUCIA</span></figcaption>
-          </figure>
-          <figure class="gallery-card">
-            <img src="4.jpg" alt="Illustrated Lucia with a confident expression" loading="lazy">
-            <figcaption>Own the night <span>04 / LUCIA</span></figcaption>
-          </figure>
-        </div>
-      </div>
-    </section>
-
-    <section class="profile" id="lucia">
-      <div class="wrap profile-grid">
-        <div class="portrait-wrap">
-          <img src="main.gif" alt="Illustrated portrait of Lucia">
-          <span class="portrait-tag">ETHEREUM · COMMUNITY</span>
-        </div>
-        <div class="profile-content">
-          <div class="section-label">02 / The icon</div>
-          <h2>Lucia</h2>
-          <p>Focused. Fearless. Never waiting for permission. Lucia is the spark behind this community’s little corner of the internet—and the face of the next big move.</p>
-          <div class="stats">
-            <div><b>$LUCIA</b>Ticker</div>
-            <div><b>Ethereum</b>Chain</div>
-            <div><b>The crew</b>Community</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="community">
-      <div class="wrap">
-        <div class="section-label">03 / Your move</div>
-        <h2>Find your people.<br><span>Own the night.</span></h2>
-        <p>Follow Lucia on X and be part of the movement.</p>
-        <div class="community-actions">
-          <a class="button hot" href="https://app.uniswap.org/#/swap?inputCurrency=eth&amp;outputCurrency=0xede6a93741f2466decfd709158e235fbfaf001a1" target="_blank" rel="noopener noreferrer">Buy $LUCIA <span class="arrow">↗</span></a>
-          <a class="button" href="https://x.com/luciaeth_x" target="_blank" rel="noopener noreferrer">Follow on X <span class="arrow">↗</span></a>
-        </div>
-      </div>
-    </section>
-
-    <section class="market" id="chart">
-      <div class="wrap">
-        <div class="market-heading">
-          <div>
-            <div class="section-label">Ethereum / $LUCIA</div>
-            <h2>Live market <span>chart.</span></h2>
-          </div>
-          <div class="market-address">CA: 0xede6a93741f2466decfd709158e235fbfaf001a1</div>
-        </div>
-        <iframe
-          class="market-frame"
-          src="https://dexscreener.com/ethereum/0xede6a93741f2466decfd709158e235fbfaf001a1?embed=1&amp;loadChartSettings=0&amp;chartLeftToolbar=0&amp;chartTheme=dark&amp;theme=dark&amp;chartStyle=1&amp;chartType=usd&amp;interval=15"
-          title="Live Dexscreener chart for Lucia on Ethereum"
-          loading="lazy"
-          referrerpolicy="strict-origin-when-cross-origin"
-          allowfullscreen>
-        </iframe>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="wrap footer-row">
-      <span>© 2026 LUCIA COMMUNITY</span>
-      <div class="footer-disclaimer"><strong>Fan-made meme token.</strong> Lucia is an original community-driven concept and is not affiliated with any external game, film, or franchise. $LUCIA is for entertainment only; meme tokens are volatile and carry risk.</div>
+      <div class="chart reveal"><iframe id="chartFrame" title="$LUCIA chart" loading="lazy"></iframe></div>
     </div>
-  </footer>
+    <div class="howto reveal">
+      <div><b>Get a wallet</b>Phantom or Solflare.</div>
+      <div><b>Get SOL</b>From any exchange.</div>
+      <div><b>Pick an app</b>Jupiter, pump.fun or Fomo.</div>
+      <div><b>Paste the CA</b>Check it matches, then swap.</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="made">site built by random holders</div>
+    <div><strong>$LUCIA</strong> is a memecoin with no team, no roadmap and no intrinsic value. Crypto is risky: never put in what you can't afford to lose.</div>
+    <div>Fan-made and unofficial. Not affiliated with, endorsed or sponsored by Rockstar Games or Take-Two Interactive. Grand Theft Auto and related names are trademarks of Take-Two Interactive Software. Trailer footage is embedded from Rockstar Games' official YouTube channel.</div>
+  </div>
+</footer>
+
+<div class="modal support" id="support" role="dialog" aria-label="Support the CTO">
+  <div class="sbox">
+    <button class="x" type="button" data-close aria-label="Close">✕</button>
+    <div class="eyebrow">Community wallet</div>
+    <h3 class="display grad">Support the CTO</h3>
+    <p>$LUCIA is run by holders. Donations in <b>SOL</b>, <b>LUCIA</b> or <b>TTWO</b> pay for listings, boosts and content. Every spend is posted in the Telegram.</p>
+    <div class="ca"><span data-wallet></span><button type="button" data-copy-wallet>Copy</button></div>
+    <a class="solscan" data-wallet-link href="#" target="_blank" rel="noopener">View the wallet on Solscan ↗</a>
+    <p class="fine">Solana only. Run by a holder; donations are voluntary and can't be refunded.</p>
+  </div>
+</div>
+<div class="modal" id="modal"><button class="x" type="button" aria-label="Close">✕</button><div class="box" id="modalBox"></div></div>
+<div class="lightbox" id="lightbox"><img alt=""></div>
+
+<script>
+/* ===================== EDIT HERE ===================== */
+const T1 = "QdBZY2fkU-0", T2 = "VQRLujxTm3c";   // official Rockstar Games uploads
+const CONFIG = {
+  ca:   "0xede6a93741f2466decfd709158e235fbfaf001a1",
+  pair: "GfJ9N22hFFBqF29M5yxmCU39rcWLXarCbpvNzr71k4YW",
+  x:    "https://x.com/luciaeth_x",
+  telegram: "https://t.me/luciaonsol",
+  holders: "7,100+",
+  release: "2026-11-19T00:00:00",
+  // Muted background loops. Segments checked frame by frame: Lucia only.
+  loops: {
+    hero:  { id: T1, start: 4,   end: 40 },    // "Lucia, do you know why you're here?" "Bad luck, I guess." + ~30 s of the trailer's song
+    band1: { id: T2, start: 63,  end: 70 },    // walks out of prison
+    band2: { id: T2, start: 115, end: 125 },   // apartment, car chase, the kiss
+  },
+  scenes: [
+    { id: T1, start: 7,   end: 11,  title: "Why are you here?", src: "Trailer 1", wide: true },
+    { id: T1, start: 69,  end: 79,  title: "The job",           src: "Trailer 1" },
+    { id: T2, start: 63,  end: 70,  title: "Free",              src: "Trailer 2" },
+    { id: T2, start: 79,  end: 83,  title: "Last call",         src: "Trailer 2" },
+    { id: T2, start: 115, end: 125, title: "Ride or die",       src: "Trailer 2" },
+  ],
+  gallery: 10,       // media/gallery/1.jpg … 10.jpg (+ N-800.jpg light versions)
+};
+/* ===================================================== */
+
+const $ = (s, r = document) => r.querySelector(s), $$ = (s, r = document) => [...r.querySelectorAll(s)];
+const io = new IntersectionObserver(es => es.forEach(e => e.isIntersecting && (e.target.classList.add("in"), io.unobserve(e.target))), { threshold: .12 });
+const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+// links
+const L = {
+  buy: `https://jup.ag/swap/SOL-${CONFIG.ca}`, chart: `https://dexscreener.com/solana/${CONFIG.pair}`,
+  pump: `https://pump.fun/coin/${CONFIG.ca}`, fomo: `https://fomo.family/tokens/solana/${CONFIG.ca}`,
+  x: CONFIG.x, tg: CONFIG.telegram,
+};
+for (const k in L) $$(`[data-${k}]`).forEach(a => L[k] ? Object.assign(a, { href: L[k], target: "_blank", rel: "noopener" }) : a.classList.add("hidden"));
+$$("[data-ca]").forEach(e => e.textContent = CONFIG.ca);
+$$("[data-holders]").forEach(e => e.textContent = CONFIG.holders);
+$$("[data-copy]").forEach(b => b.addEventListener("click", async () => {
+  try { await navigator.clipboard.writeText(CONFIG.ca); } catch (e) {
+    const t = document.createElement("textarea"); t.value = CONFIG.ca; document.body.append(t); t.select(); document.execCommand("copy"); t.remove();
+  }
+  b.textContent = "Copied ✓"; b.classList.add("ok"); setTimeout(() => { b.textContent = "Copy CA"; b.classList.remove("ok"); }, 1800);
+}));
+
+const nav = $("#nav"); const onScroll = () => nav.classList.toggle("solid", scrollY > 40); addEventListener("scroll", onScroll, { passive: true }); onScroll();
+
+const words = ["Main character", "Millions will play", "Vice City", "Nov 19", "Lucia", "Ride or die", "Face of the decade"];
+$("#track").innerHTML = Array(4).fill(words).flat().map(w => `<span>${w}</span><span>✦</span>`).join("");
+
+// reel tiles
+$("#reelGrid").innerHTML = CONFIG.scenes.map((c, i) => `
+  <div class="tile reveal${c.wide ? " wide" : ""}" data-i="${i}" role="button" tabindex="0" aria-label="Play ${c.title} with sound">
+    <div class="vid" data-scene="${i}" style="background-image:url(media/posters/s${i}.jpg)"></div>
+    <span class="hint">▶ sound</span>
+    <div class="meta"><h4>${c.title}</h4><div class="src">${c.src} · Rockstar Games</div></div>
+  </div>`).join("");
+
+// modal player with sound
+const modal = $("#modal");
+function openScene(c) {
+  $("#modalBox").innerHTML = `<iframe allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen title="${c.title}"
+    src="https://www.youtube-nocookie.com/embed/${c.id}?start=${c.start}&end=${c.end}&autoplay=1&rel=0&modestbranding=1&playsinline=1"></iframe>`;
+  modal.classList.add("on");
+}
+function closeModal() { modal.classList.remove("on"); $("#modalBox").innerHTML = ""; }
+$$(".tile").forEach(t => {
+  const go = () => openScene(CONFIG.scenes[+t.dataset.i]);
+  t.addEventListener("click", go); t.addEventListener("keydown", e => (e.key === "Enter" || e.key === " ") && (e.preventDefault(), go()));
+});
+modal.addEventListener("click", e => e.target !== $("#modalBox iframe") && closeModal());
+addEventListener("keydown", e => e.key === "Escape" && (closeModal(), $("#lightbox").classList.remove("on")));
+
+// background loops (YouTube, muted). Sound: only the hero loop, once the visitor taps the header button.
+const players = new Map();
+let soundOn = false;
+const audible = el => el.dataset.yt === "hero";   // the soundtrack: only the hero loop, it keeps playing while you scroll
+function applySound() {
+  players.forEach((p, el) => { if (!p.mute) return; (soundOn && audible(el)) ? (p.unMute(), p.setVolume(80)) : p.mute(); });
+  const b = $("#sound"); b.classList.toggle("off", !soundOn);
+  $("#soundIc").textContent = soundOn ? "🔊" : "🔇"; $("#soundTxt").textContent = soundOn ? "Mute" : "Sound";
+  b.setAttribute("aria-label", soundOn ? "Mute" : "Turn sound on");
+}
+function seg(el) { return el.dataset.yt ? CONFIG.loops[el.dataset.yt] : CONFIG.scenes[+el.dataset.scene]; }
+function makePlayer(el) {
+  const s = seg(el), host = document.createElement("div"); el.append(host);
+  const p = new YT.Player(host, {
+    host: "https://www.youtube-nocookie.com", videoId: s.id,
+    // no `end`: the loop jumps back before the segment ends, so YouTube never pauses or shows its overlay
+    playerVars: { autoplay: 1, mute: 1, controls: 0, disablekb: 1, fs: 0, rel: 0, modestbranding: 1, playsinline: 1, iv_load_policy: 3, start: s.start },
+    events: {
+      onReady: e => {
+        (soundOn && audible(el)) ? (e.target.unMute(), e.target.setVolume(80)) : e.target.mute(); e.target.playVideo();
+        el._iv = setInterval(() => { const t = e.target.getCurrentTime?.(); if (t != null && (t >= s.end - .25 || t < s.start - 1)) e.target.seekTo(s.start, true); }, 200);
+      },
+      // show the video only while it is actually playing (hides YouTube's buffering/paused overlays)
+      onStateChange: e => {
+        if (e.data === YT.PlayerState.PLAYING) el.classList.add("on");
+        if (e.data === YT.PlayerState.PAUSED || e.data === YT.PlayerState.UNSTARTED) el.classList.remove("on");
+        if (e.data === YT.PlayerState.PAUSED || e.data === YT.PlayerState.ENDED) { e.target.seekTo(s.start, true); e.target.playVideo(); }
+      },
+    },
+  });
+  players.set(el, p);
+}
+// Light mode (phones, data saver): scene tiles stay as posters (tap still plays with sound).
+const light = matchMedia("(max-width: 760px)").matches || navigator.connection?.saveData === true;
+function dropPlayer(el) {
+  const p = players.get(el); if (!p) return;
+  clearInterval(el._iv); try { p.destroy(); } catch (e) {}
+  players.delete(el); el.classList.remove("on");
+}
+function startLoops() {
+  // A player exists only while its section is near the screen (the poster shows otherwise).
+  // Never paused, so YouTube's pause overlay never appears. The hero keeps playing: it carries the soundtrack.
+  const vo = new IntersectionObserver(es => es.forEach(e => {
+    const el = e.target;
+    if (e.isIntersecting) { if (!players.has(el) && !(light && el.dataset.scene)) makePlayer(el); }
+    else if (el.dataset.yt !== "hero") dropPlayer(el);
+  }), { rootMargin: "250px 0px" });
+  $$(".vid").forEach(v => vo.observe(v));
+}
+window.onYouTubeIframeAPIReady = startLoops;
+if (!reduced) { const s = document.createElement("script"); s.src = "https://www.youtube.com/iframe_api"; document.head.append(s); }
+
+// Sound: browsers block audio until the visitor interacts, so the page loads muted and the FIRST tap/click/key
+// anywhere turns the soundtrack on. After that the header button toggles it.
+let touched = false;
+function soundStart() {
+  soundOn = true; applySound();
+  const hp = players.get($('[data-yt="hero"]')); hp?.seekTo?.(CONFIG.loops.hero.start, true); hp?.playVideo?.();
+}
+$("#sound").addEventListener("click", () => {
+  touched = true;
+  if (soundOn) { soundOn = false; applySound(); } else soundStart();
+});
+const firstTouch = e => {
+  if (touched || e.target.closest?.("#sound")) return;
+  touched = true; soundStart();
+  ["click", "touchend", "keydown"].forEach(t => removeEventListener(t, firstTouch, true));
+};
+// click/touchend/keydown (not pointerdown): only these grant the browser's "user activation" on phones
+["click", "touchend", "keydown"].forEach(t => addEventListener(t, firstTouch, true));
+applySound();
+
+// live stats (DexScreener public API)
+const usd = n => n == null ? "–" : n >= 1e9 ? "$" + (n / 1e9).toFixed(2) + "B" : n >= 1e6 ? "$" + (n / 1e6).toFixed(2) + "M" : n >= 1e3 ? "$" + (n / 1e3).toFixed(1) + "K" : "$" + n.toFixed(0);
+async function stats() {
+  try {
+    const j = await (await fetch(`https://api.dexscreener.com/latest/dex/pairs/solana/${CONFIG.pair}`)).json();
+    const p = j.pair || j.pairs?.[0]; if (!p) return;
+    $('[data-s="mcap"]').textContent = usd(p.marketCap ?? p.fdv);
+    $('[data-s="liq"]').textContent = usd(p.liquidity?.usd);
+    const ch = p.priceChange?.h24, c = $('[data-s="change"]');
+    c.textContent = ch == null ? "–" : (ch > 0 ? "+" : "") + ch.toFixed(1) + "%"; c.className = ch >= 0 ? "up" : "down";
+  } catch (e) {}
+}
+stats(); setInterval(stats, 30000);
+$("#chartFrame").src = `https://dexscreener.com/solana/${CONFIG.pair}?embed=1&loadChartSettings=0&trades=0&tabs=0&info=0&chartLeftToolbar=0&chartTheme=dark&theme=dark&chartStyle=1&chartType=usd&interval=15`;
+
+// gallery: media/gallery/N.jpg (1600 px, lightbox) + N-800.jpg (grid)
+if (CONFIG.gallery) {
+  $("#gallery").innerHTML = Array.from({ length: CONFIG.gallery }, (_, k) => k + 1).map(i =>
+    `<figure class="reveal" data-full="media/gallery/${i}.jpg"><img loading="lazy" decoding="async" width="800" height="450"
+      src="media/gallery/${i}-800.jpg" srcset="media/gallery/${i}-800.jpg 800w, media/gallery/${i}.jpg 1600w"
+      sizes="(max-width: 760px) 100vw, 33vw" alt="Lucia, official GTA VI screenshot"></figure>`).join("");
+  $("#gallerySection").classList.remove("hidden");
+  $$("#gallery figure").forEach(f => { io.observe(f); f.addEventListener("click", () => { $("#lightbox img").src = f.dataset.full; $("#lightbox").classList.add("on"); }); });
+}
+$("#lightbox").addEventListener("click", () => $("#lightbox").classList.remove("on"));
+
+// countdown
+const target = new Date(CONFIG.release).getTime();
+(function tick() {
+  const d = Math.max(0, target - Date.now());
+  if (!d) { $("#relTitle").innerHTML = 'She\'s <span class="grad">here</span>'; $("#count").classList.add("hidden"); $("#relEyebrow").textContent = "Grand Theft Auto VI · out now"; return; }
+  const v = { d: Math.floor(d / 864e5), h: Math.floor(d / 36e5) % 24, m: Math.floor(d / 6e4) % 60, s: Math.floor(d / 1e3) % 60 };
+  for (const k in v) $(`[data-c="${k}"]`).textContent = String(v[k]).padStart(2, "0");
+  setTimeout(tick, 1000);
+})();
+
+$$(".reveal").forEach(el => io.observe(el));
+
+// community wallet (Support the CTO)
+const WALLET = "2XLTLPLMQRjS5URwkFHcS5NxigRUemPagey27jki5P5P";
+$$("[data-wallet]").forEach(e => e.textContent = WALLET);
+$$("[data-wallet-link]").forEach(a => a.href = `https://solscan.io/account/${WALLET}`);
+const sup = $("#support");
+$$("[data-support]").forEach(b => b.addEventListener("click", () => sup.classList.add("on")));
+sup.addEventListener("click", e => (e.target === sup || e.target.closest("[data-close]")) && sup.classList.remove("on"));
+addEventListener("keydown", e => e.key === "Escape" && sup.classList.remove("on"));
+$("[data-copy-wallet]").addEventListener("click", async e => {
+  const b = e.currentTarget;
+  try { await navigator.clipboard.writeText(WALLET); } catch (err) {}
+  b.textContent = "Copied ✓"; b.classList.add("ok"); setTimeout(() => { b.textContent = "Copy"; b.classList.remove("ok"); }, 1800);
+});
+
+// official X embed for the lore tweet, loaded only when that section gets close (styled quote until then)
+{
+  const xo = new IntersectionObserver(es => {
+    if (!es.some(e => e.isIntersecting)) return;
+    xo.disconnect();
+    const s = document.createElement("script"); s.src = "https://platform.twitter.com/widgets.js"; s.async = true; s.charset = "utf-8"; document.body.append(s);
+  }, { rootMargin: "600px 0px" });
+  xo.observe($("#origin"));
+}
+</script>
 </body>
 </html>
