@@ -23,7 +23,7 @@
   --night:#060912; --deep:#0b1220; --card:#111a2e; --line:rgba(255,255,255,.1);
   --pink:#ff3d8b; --coral:#ff7a59; --gold:#ffc36b; --teal:#8eb4ff; --violet:#627EEA;
   --text:#f2f5ff; --muted:#a8b3d4;
-  --sunset:linear-gradient(100deg,var(--gold) 0%,var(--coral) 32%,var(--pink) 66%,var(--violet) 100%);
+  --accent:#627EEA;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;overflow-x:clip}
@@ -32,7 +32,7 @@ a{color:inherit;text-decoration:none}
 .wrap{width:min(1200px,100% - 32px);margin-inline:auto}
 .display{font-family:Anton,Impact,sans-serif;font-weight:400;line-height:.88;text-transform:uppercase;letter-spacing:.005em}
 .script{font-family:Yellowtail,cursive;font-weight:400}
-.grad{background:var(--sunset);-webkit-background-clip:text;background-clip:text;color:transparent}
+.grad{color:var(--accent)}
 .eyebrow{font-size:12px;font-weight:800;letter-spacing:.24em;text-transform:uppercase;color:var(--teal)}
 .hidden{display:none!important}
 
@@ -45,7 +45,7 @@ nav.solid{background:rgba(6,9,18,.78);backdrop-filter:blur(14px);border-bottom:1
 .links a:hover{color:var(--text)}
 .btn{display:inline-flex;align-items:center;gap:8px;padding:13px 22px;border-radius:999px;font-weight:800;font-size:15px;border:0;cursor:pointer;transition:transform .15s,box-shadow .2s;white-space:nowrap}
 .btn:hover{transform:translateY(-2px)}
-.btn-hot{background:var(--sunset);color:#060912;box-shadow:0 10px 40px -10px var(--pink)}
+.btn-hot{background:var(--accent);color:#fff;box-shadow:0 10px 40px -10px rgba(98,126,234,.55)}
 .btn-ghost{background:rgba(255,255,255,.07);color:var(--text);border:1px solid rgba(255,255,255,.2);backdrop-filter:blur(8px)}
 .btn-sm{padding:10px 18px;font-size:14px}
 
@@ -62,7 +62,7 @@ nav.solid{background:rgba(6,9,18,.78);backdrop-filter:blur(14px);border-bottom:1
   linear-gradient(180deg,rgba(6,9,18,.5),rgba(6,9,18,0) 28%,rgba(6,9,18,.15) 60%,var(--night) 100%),
   linear-gradient(90deg,rgba(6,9,18,.75),rgba(6,9,18,0) 65%)}
 .hero-in{padding-bottom:7svh}
-.hero h1{font-size:clamp(110px,24vw,340px);filter:drop-shadow(0 12px 60px rgba(255,61,139,.45))}
+.hero h1{font-size:clamp(110px,24vw,340px);filter:drop-shadow(0 12px 60px rgba(98,126,234,.35))}
 .hero .tag{font-size:clamp(34px,5vw,64px);color:var(--gold);display:inline-block;transform:rotate(-4deg);margin:-.2em 0 .3em .1em}
 .hero-row{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin-top:8px}
 .sound{display:inline-flex;align-items:center;gap:10px;padding:10px 16px;border-radius:999px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.2);color:#fff;font:800 14px Inter,sans-serif;cursor:pointer;transition:transform .15s,border-color .2s;white-space:nowrap}
@@ -78,24 +78,19 @@ nav.solid{background:rgba(6,9,18,.78);backdrop-filter:blur(14px);border-bottom:1
 @keyframes bob{50%{transform:translate(-50%,6px)}}
 
 /* ---------- marquee ---------- */
-.marquee{overflow:hidden;background:var(--sunset);padding:14px 0;transform:rotate(-1.2deg) scale(1.03);margin:-10px 0 0;position:relative;z-index:2}
+.marquee{overflow:hidden;background:var(--accent);padding:14px 0;transform:rotate(-1.2deg) scale(1.03);margin:-10px 0 0;position:relative;z-index:2}
 .track{display:flex;gap:36px;width:max-content;animation:run 30s linear infinite}
-.track span{font-family:Anton,sans-serif;font-size:28px;text-transform:uppercase;color:#060912;white-space:nowrap}
+.track span{font-family:Anton,sans-serif;font-size:28px;text-transform:uppercase;color:#fff;white-space:nowrap}
 @keyframes run{to{transform:translateX(-50%)}}
 
 /* ---------- thesis ---------- */
-.thesis{padding:150px 0 90px}
+.thesis{padding:120px 0 80px}
 .big{font-size:clamp(54px,9.5vw,150px)}
 .thesis .big span{display:block}
 .lead{font-size:clamp(18px,1.8vw,22px);color:#d8e0f6;max-width:640px;margin-top:28px}
-.numbers{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:80px}
-.num{padding:30px 28px;border-radius:26px;background:linear-gradient(180deg,var(--card),var(--deep));border:1px solid var(--line)}
-.num b{display:block;font-family:Anton,sans-serif;font-weight:400;font-size:clamp(54px,6vw,86px);line-height:1}
-.num p{color:var(--muted);margin-top:10px;font-size:15px}
-.num small{display:block;margin-top:8px;font-size:11px;color:rgba(168,179,212,.6)}
 
 /* ---------- cinematic bands ---------- */
-.band{position:relative;height:92svh;min-height:520px;display:flex;align-items:center;isolation:isolate;overflow:hidden}
+.band{position:relative;height:88svh;min-height:500px;display:flex;align-items:center;isolation:isolate;overflow:hidden}
 .band .vid{z-index:-2}
 .band:before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,var(--night) 0%,rgba(6,9,18,.15) 22%,rgba(6,9,18,.15) 70%,var(--night) 100%),linear-gradient(90deg,rgba(6,9,18,.7),transparent 60%)}
 .band.right:before{background:linear-gradient(180deg,var(--night) 0%,rgba(6,9,18,.15) 22%,rgba(6,9,18,.15) 70%,var(--night) 100%),linear-gradient(270deg,rgba(6,9,18,.7),transparent 60%)}
@@ -106,8 +101,8 @@ nav.solid{background:rgba(6,9,18,.78);backdrop-filter:blur(14px);border-bottom:1
 .band .script{font-size:clamp(30px,4vw,52px);color:var(--gold);display:block;margin-bottom:8px}
 
 /* ---------- reel ---------- */
-.reel-sec{padding:120px 0 60px}
-.head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:40px;flex-wrap:wrap}
+.reel-sec{padding:100px 0 50px}
+.head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:36px;flex-wrap:wrap}
 .head h2{font-size:clamp(50px,7.5vw,110px)}
 .head p{max-width:420px;color:var(--muted)}
 .reel{display:grid;grid-template-columns:repeat(6,1fr);gap:14px}
@@ -142,7 +137,7 @@ nav.solid{background:rgba(6,9,18,.78);backdrop-filter:blur(14px);border-bottom:1
 .nav-cta{display:flex;gap:8px;align-items:center}
 .support-btn{border-color:rgba(255,61,139,.55)}
 .modal.support{z-index:95}
-.sbox{position:relative;width:min(560px,100%);border-radius:24px;background:linear-gradient(180deg,var(--card),var(--deep));border:1px solid var(--line);padding:34px 28px 26px}
+.sbox{position:relative;width:min(560px,100%);border-radius:24px;background:var(--card);border:1px solid var(--line);padding:34px 28px 26px}
 .sbox h3{font-size:clamp(40px,7vw,64px);margin:6px 0 12px}
 .sbox p{color:#d8e0f6}
 .sbox .ca{margin:18px 0 10px}
@@ -152,27 +147,18 @@ nav.solid{background:rgba(6,9,18,.78);backdrop-filter:blur(14px);border-bottom:1
 @media (max-width:560px){.support-btn span{display:none}.nav-cta .btn{padding:9px 13px}}
 
 /* token block */
-.token{padding:100px 0 120px}
+.token{padding:90px 0 110px}
+.token .head{align-items:flex-end}
 .token .head h2{font-size:clamp(56px,8vw,120px)}
 .token .ticker{font-family:Anton,sans-serif;font-size:clamp(28px,4vw,48px);letter-spacing:.04em;margin-top:6px}
-.tok{display:grid;grid-template-columns:1.05fr 1fr;gap:18px}
-.tok>*{min-width:0}
-.panel{border-radius:26px;background:var(--card);border:1px solid var(--line);padding:28px}
-.stats{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border-radius:18px;overflow:hidden;margin:20px 0}
-.stat{background:var(--deep);padding:16px 18px;min-width:0}
-.stat small{display:block;font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
-.stat strong{display:block;font-size:22px;font-weight:800;margin-top:2px;font-variant-numeric:tabular-nums}
-.up{color:#4cf0a0}.down{color:#ff6b8a}
-.ca{display:flex;align-items:center;gap:10px;padding:8px 8px 8px 16px;border-radius:14px;background:var(--night);border:1px solid var(--line);font:500 13px ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--muted)}
+.token-actions{display:flex;flex-wrap:wrap;gap:10px;margin:28px 0 22px}
+.ca{display:flex;align-items:center;gap:10px;padding:8px 8px 8px 16px;border-radius:14px;background:var(--card);border:1px solid var(--line);font:500 13px ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--muted);max-width:100%;min-width:min(100%,420px);flex:1}
 .ca span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0;flex:1}
-.ca button{flex:none;background:var(--card);color:var(--text);border:1px solid var(--line);border-radius:9px;padding:8px 12px;font:700 12px Inter,sans-serif;cursor:pointer}
-.ca button.ok{background:var(--violet);color:#060912}
-.venues{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px}
-.venues .btn{justify-content:center}
-.venues .btn-hot{grid-column:1 / -1}
-.chart{border-radius:26px;overflow:hidden;border:1px solid var(--line);min-height:460px;background:var(--deep)}
-.chart iframe{width:100%;height:100%;min-height:460px;border:0;display:block}
-.howto{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:18px;counter-reset:s}
+.ca button{flex:none;background:var(--deep);color:var(--text);border:1px solid var(--line);border-radius:9px;padding:8px 12px;font:700 12px Inter,sans-serif;cursor:pointer}
+.ca button.ok{background:var(--accent);color:#fff}
+.chart{border-radius:26px;overflow:hidden;border:1px solid var(--line);min-height:520px;background:var(--deep)}
+.chart iframe{width:100%;height:100%;min-height:520px;border:0;display:block}
+.howto{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:22px;counter-reset:s}
 .howto div{padding:18px;border-radius:18px;background:var(--deep);border:1px solid var(--line);font-size:14px;color:var(--muted)}
 .howto div:before{counter-increment:s;content:"0" counter(s);display:block;font-family:Anton,sans-serif;font-size:28px;color:var(--pink);line-height:1;margin-bottom:6px}
 .howto b{color:var(--text);display:block}
@@ -188,11 +174,12 @@ footer strong{color:var(--text)}
 
 @media (max-width:900px){
   .links{display:none}
-  .numbers,.tok{grid-template-columns:1fr}
   .tile,.tile.wide{grid-column:span 3;aspect-ratio:9/13}
   .tile.wide{grid-column:span 6;aspect-ratio:16/10}
   .howto{grid-template-columns:1fr 1fr}
-  .thesis{padding:110px 0 70px}
+  .thesis{padding:90px 0 60px}
+  .token{padding:70px 0 90px}
+  .chart,.chart iframe{min-height:420px}
 }
 @media (max-width:560px){
   .tile,.tile.wide{grid-column:span 6;aspect-ratio:4/5}
@@ -202,10 +189,10 @@ footer strong{color:var(--text)}
   .brand{font-size:22px}
   .nav-cta{gap:6px}
   .hero-row .btn{padding:11px 16px;font-size:14px}
-  .panel{padding:18px}
-  .stat{padding:14px}
-  .stat strong{font-size:18px}
-  .venues{grid-template-columns:1fr}
+  .token-actions{flex-direction:column}
+  .ca{min-width:0}
+  .howto{grid-template-columns:1fr}
+  .chart,.chart iframe{min-height:360px}
 }
 @media (prefers-reduced-motion:reduce){.track,.scroll-cue{animation:none}.reveal{opacity:1;transform:none}}
 </style>
@@ -247,11 +234,6 @@ footer strong{color:var(--text)}
       <span>Millions</span><span class="grad">will play</span><span>as her.</span>
     </h2>
     <p class="lead reveal">For the first time in the modern era of Grand Theft Auto, the lead is a woman. The biggest launch in entertainment history puts one name on every screen on the planet. That name is <b>Lucia</b>.</p>
-    <div class="numbers">
-      <div class="num reveal"><b class="grad">210M+</b><p>copies of GTA V sold. The audience is already here, waiting.</p><small>Take-Two Interactive</small></div>
-      <div class="num reveal"><b class="grad">90M+</b><p>views of Trailer 1 in 24 hours, the biggest non-music debut YouTube had ever seen.</p><small>Rockstar Games, Dec 2023</small></div>
-      <div class="num reveal"><b class="grad">475M</b><p>views of Trailer 2 across platforms in its first 24 hours.</p><small>Rockstar Games, May 2025</small></div>
-    </div>
   </div>
 </section>
 
@@ -305,25 +287,13 @@ footer strong{color:var(--text)}
       </div>
       <p>The coin named after her. No dev, no team: this site was made by random holders.</p>
     </div>
-    <div class="tok">
-      <div class="panel reveal">
-        <div class="ca"><span data-ca></span><button type="button" data-copy>Copy CA</button></div>
-        <div class="stats">
-          <div class="stat"><small>Market cap</small><strong data-s="mcap">–</strong></div>
-          <div class="stat"><small>24h</small><strong data-s="change">–</strong></div>
-          <div class="stat"><small>Liquidity</small><strong data-s="liq">–</strong></div>
-          <div class="stat"><small>Holders</small><strong data-holders>–</strong></div>
-        </div>
-        <div class="venues">
-          <a class="btn btn-hot" data-buy href="#"><img src="media/logos/uniswap.org.png" alt="">Buy $LUCIA</a>
-          <a class="btn btn-ghost" data-chart href="#"><img src="media/logos/dexscreener.com.png" alt="">Chart</a>
-          <a class="btn btn-ghost" data-scan href="#"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="#627EEA" d="M12 1.75 5.75 12.25l6.25 3.7 6.25-3.7L12 1.75zm0 14.35-6.25-3.7L12 22.25l6.25-9.85-6.25 3.7z"/></svg>Etherscan</a>
-          <a class="btn btn-ghost" data-x href="#"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>X</a>
-          <a class="btn btn-ghost" data-tg href="#"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12" fill="#2AABEE"/><path fill="#fff" d="M5.4 11.7l11.2-4.3c.5-.2 1 .1.8.9l-1.9 9c-.1.6-.5.8-1.1.5l-3-2.2-1.4 1.4c-.2.2-.3.3-.6.3l.2-3.1 5.6-5c.2-.2-.1-.3-.4-.1l-6.9 4.3-3-.9c-.6-.2-.7-.6.5-.8z"/></svg>Telegram</a>
-        </div>
-      </div>
-      <div class="chart reveal"><iframe id="chartFrame" title="Lucia ($LUCIA) chart" loading="lazy"></iframe></div>
+    <div class="token-actions reveal">
+      <div class="ca"><span data-ca></span><button type="button" data-copy>Copy CA</button></div>
+      <a class="btn btn-hot" data-buy href="#"><img src="media/logos/uniswap.org.png" alt="">Buy $LUCIA</a>
+      <a class="btn btn-ghost" data-chart href="#"><img src="media/logos/dexscreener.com.png" alt="">Chart</a>
+      <a class="btn btn-ghost" data-scan href="#"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="#627EEA" d="M12 1.75 5.75 12.25l6.25 3.7 6.25-3.7L12 1.75zm0 14.35-6.25-3.7L12 22.25l6.25-9.85-6.25 3.7z"/></svg>Etherscan</a>
     </div>
+    <div class="chart reveal"><iframe id="chartFrame" title="Lucia ($LUCIA) chart" loading="lazy"></iframe></div>
     <div class="howto reveal">
       <div><b>Get a wallet</b>MetaMask or Rabby.</div>
       <div><b>Get ETH</b>From any exchange.</div>
@@ -364,7 +334,6 @@ const CONFIG = {
   wallet: "", // paste ETH donation address
   x:    "https://x.com/luciaeth_x",
   telegram: "https://t.me/luciaeth_tg",
-  holders: "7,100+",
   // Muted background loops. Segments checked frame by frame: Lucia only.
   loops: {
     hero:  { id: T1, start: 4,   end: 40 },    // "Lucia, do you know why you're here?" "Bad luck, I guess." + ~30 s of the trailer's song
@@ -395,7 +364,6 @@ const L = {
 };
 for (const k in L) $$(`[data-${k}]`).forEach(a => L[k] ? Object.assign(a, { href: L[k], target: "_blank", rel: "noopener" }) : a.classList.add("hidden"));
 $$("[data-ca]").forEach(e => e.textContent = CONFIG.ca);
-$$("[data-holders]").forEach(e => e.textContent = CONFIG.holders);
 $$("[data-copy]").forEach(b => b.addEventListener("click", async () => {
   try { await navigator.clipboard.writeText(CONFIG.ca); } catch (e) {
     const t = document.createElement("textarea"); t.value = CONFIG.ca; document.body.append(t); t.select(); document.execCommand("copy"); t.remove();
@@ -503,19 +471,6 @@ const firstTouch = e => {
 ["click", "touchend", "keydown"].forEach(t => addEventListener(t, firstTouch, true));
 applySound();
 
-// live stats (DexScreener public API)
-const usd = n => n == null ? "–" : n >= 1e9 ? "$" + (n / 1e9).toFixed(2) + "B" : n >= 1e6 ? "$" + (n / 1e6).toFixed(2) + "M" : n >= 1e3 ? "$" + (n / 1e3).toFixed(1) + "K" : "$" + n.toFixed(0);
-async function stats() {
-  try {
-    const j = await (await fetch(`https://api.dexscreener.com/latest/dex/pairs/ethereum/${CONFIG.pair}`)).json();
-    const p = j.pair || j.pairs?.[0]; if (!p) return;
-    $('[data-s="mcap"]').textContent = usd(p.marketCap ?? p.fdv);
-    $('[data-s="liq"]').textContent = usd(p.liquidity?.usd);
-    const ch = p.priceChange?.h24, c = $('[data-s="change"]');
-    c.textContent = ch == null ? "–" : (ch > 0 ? "+" : "") + ch.toFixed(1) + "%"; c.className = ch >= 0 ? "up" : "down";
-  } catch (e) {}
-}
-stats(); setInterval(stats, 30000);
 $("#chartFrame").src = `https://dexscreener.com/ethereum/${CONFIG.pair}?embed=1&loadChartSettings=0&trades=0&tabs=0&info=0&chartLeftToolbar=0&chartTheme=dark&theme=dark&chartStyle=1&chartType=usd&interval=15`;
 
 // gallery: media/gallery/N.jpg (1600 px, lightbox) + N-800.jpg (grid)
